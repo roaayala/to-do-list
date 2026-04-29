@@ -1,4 +1,10 @@
 import "./style.css";
-import app from "./controllers/App.js";
+import App from "./controllers/App.js";
 
-app();
+const app = new App();
+
+app.addWorkspace("Icon Design", "Description");
+
+app.addWorkspace("Notary and PPAT", "Description");
+
+console.log(app.workspaces);

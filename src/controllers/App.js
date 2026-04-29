@@ -1,5 +1,13 @@
-import Todo from "../models/Todo.js";
+import Workspace from "../models/Workspace.js";
 
 export default class App {
-	constructor() {}
+	constructor() {
+		this.workspaces = [];
+	}
+
+	addWorkspace(title, description) {
+		const newWorkspace = new Workspace(title, description);
+
+		this.workspaces = [...this.workspaces, newWorkspace];
+	}
 }
