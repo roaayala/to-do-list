@@ -1,4 +1,5 @@
 import Project from "./Project.js";
+import Collection from "./Collection.js";
 import generateId from "../utils/generateId.js";
 
 export default class Workspace {
@@ -7,14 +8,12 @@ export default class Workspace {
 		this.title = title;
 		this.description = description;
 
-		this.projects = [];
+		this.projects = new Collection();
 	}
 
 	addProject(title, description, dueDate, priority) {
 		const newProject = new Project(title, description, dueDate, priority);
-		this.projects = [...this.projects, newProject];
-
-		return newProject;
+		return this.projects.add(newProject);
 	}
 
 	get isDone() {

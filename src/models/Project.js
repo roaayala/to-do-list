@@ -1,4 +1,5 @@
 import Task from "./Task.js";
+import Collection from "./Collection.js";
 import generateId from "../utils/generateId.js";
 
 export default class Project {
@@ -8,13 +9,12 @@ export default class Project {
 		this.description = description;
 		this.dueDate = dueDate;
 		this.priority = priority;
-		this.tasks = [];
+		this.tasks = new Collection();
 	}
 
 	addTask(title, description, dueDate, priority) {
 		const newTask = new Task(title, description, dueDate, priority);
-		this.tasks = [...this.tasks, newTask];
-		return newTask;
+		return this.tasks.add(newTask);
 	}
 
 	get isDone() {

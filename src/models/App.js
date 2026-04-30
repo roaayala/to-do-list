@@ -1,15 +1,13 @@
 import Workspace from "./Workspace.js";
+import Collection from "./Collection.js";
 
 export default class App {
 	constructor() {
-		this.workspaces = [];
+		this.workspaces = new Collection();
 	}
 
 	addWorkspace(title, description) {
 		const newWorkspace = new Workspace(title, description);
-
-		this.workspaces = [...this.workspaces, newWorkspace];
-
-		return newWorkspace;
+		return this.workspaces(newWorkspace);
 	}
 }

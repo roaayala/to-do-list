@@ -1,4 +1,5 @@
 import Todo from "./Todo.js";
+import Collection from "./Collection.js";
 import generateId from "../utils/generateId.js";
 
 export default class Task {
@@ -8,12 +9,12 @@ export default class Task {
 		this.description = description;
 		this.dueDate = dueDate;
 		this.priority = priority;
-		this.todos = [];
+		this.todos = new Collection();
 	}
 
 	addTodo(title, description, dueDate, priority) {
 		const newTodo = new Todo(title, description, dueDate, priority);
-		this.todos = [...this.todos, newTodo];
+		return this.todos.add(newTodo);
 	}
 
 	get isDone() {
