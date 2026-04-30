@@ -1,4 +1,5 @@
 import createSidebarHeader from "./SidebarHeader.js";
+import createButton from "./Button.js";
 
 export default function createSidebar(workspacesData) {
 	const sidebar = document.createElement("aside");
@@ -24,8 +25,14 @@ export default function createSidebar(workspacesData) {
 		sidebarNav.appendChild(workspaceItem);
 	});
 
+	const button = createButton("New Workspaces");
+	button.addEventListener("click", () => {
+		console.log("Click");
+	});
+
 	sidebar.appendChild(sidebarHeader);
 	sidebar.appendChild(sidebarNav);
+	sidebar.appendChild(button);
 
 	return sidebar;
 }
