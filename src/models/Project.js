@@ -18,10 +18,6 @@ export default class Project {
 	}
 
 	get isDone() {
-		if (this.tasks.length === 0) {
-			return false;
-		}
-
-		return this.tasks.every((task) => task.isDone);
+		return this.tasks.isDone;
 	}
 }

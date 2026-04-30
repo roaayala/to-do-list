@@ -18,10 +18,6 @@ export default class Task {
 	}
 
 	get isDone() {
-		if (this.todos.length === 0) {
-			return false;
-		}
-
-		return this.todos.every((todo) => todo.isDone);
+		return this.todos.isDone;
 	}
 }

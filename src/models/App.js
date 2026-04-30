@@ -10,4 +10,8 @@ export default class App {
 		const newWorkspace = new Workspace(title, description);
 		return this.workspaces(newWorkspace);
 	}
+
+	get isDone() {
+		return this.workspaces.isDone;
+	}
 }

@@ -17,10 +17,6 @@ export default class Workspace {
 	}
 
 	get isDone() {
-		if (this.projects.length === 0) {
-			return false;
-		}
-
-		return this.projects.every((project) => project.isDone);
+		return this.projects.isDone;
 	}
 }
