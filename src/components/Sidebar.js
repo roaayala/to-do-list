@@ -1,6 +1,12 @@
-export default function createSidebar() {
-	const aside = document.createElement("aside");
-	aside.id = "sidebar";
+import createSidebarHeader from "./SidebarHeader.js";
 
-	return aside;
+export default function createSidebar() {
+	const sidebar = document.createElement("aside");
+	sidebar.className = "sidebar";
+
+	const sidebarHeader = createSidebarHeader();
+
+	sidebar.appendChild(sidebarHeader);
+
+	return sidebar;
 }

@@ -1,6 +1,6 @@
 export default function createMainPanel() {
 	const mainPanel = document.createElement("main");
-	mainPanel.id = "mainPanel";
+	mainPanel.className = "main-panel";
 
 	return mainPanel;
 }

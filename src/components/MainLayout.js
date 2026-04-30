@@ -3,7 +3,7 @@ import createMainPanel from "./MainPanel.js";
 
 export default function createMainLayout() {
 	const container = document.createElement("div");
-	container.classList.add("container");
+	container.className = "container";
 
 	const sidebar = createSidebar();
 
