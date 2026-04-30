@@ -13,7 +13,7 @@ export default class AppController {
 	render() {
 		this.root.innerHTML = "";
 
-		const mainLayout = createMainLayout();
+		const mainLayout = createMainLayout(this.appModel);
 		this.root.appendChild(mainLayout);
 	}
 }
