@@ -25,14 +25,13 @@ export default function createSidebar(workspacesData) {
 		sidebarNav.appendChild(workspaceItem);
 	});
 
-	const button = createButton("New Workspaces");
-	button.addEventListener("click", () => {
-		console.log("Click");
+	const showAddWorkspaceDialogButton = createButton("New Workspace", () => {
+		console.log("show dialog");
 	});
 
 	sidebar.appendChild(sidebarHeader);
 	sidebar.appendChild(sidebarNav);
-	sidebar.appendChild(button);
+	sidebar.appendChild(showAddWorkspaceDialogButton);
 
 	return sidebar;
 }
