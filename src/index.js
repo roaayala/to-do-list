@@ -1,13 +1,11 @@
 import "./style.css";
 import App from "./models/App.js";
-import AppControllers from "./controllers/AppControllers.js";
+import AppController from "./controllers/AppController.js";
 
-const app = new App();
+document.addEventListener("DOMContentLoaded", () => {
+	const rootElement = document.querySelector("#app");
 
-console.log(app.workspaces.items);
+	const app = new App();
 
-const arr = [
-	{ id: 1, title: "Hello" },
-	{ id: 2, title: "Hello" },
-	{ id: 3, title: "Hello" },
-];
+	const appController = new AppController(app, rootElement);
+});
