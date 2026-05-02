@@ -1,7 +1,9 @@
 export default function createButton(id, style, text, callback) {
 	const button = document.createElement("button");
 
-	if (id) button.id = id;
+	if (id) {
+		button.id = id;
+	}
 
 	button.className = style;
 
