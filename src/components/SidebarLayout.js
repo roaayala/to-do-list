@@ -12,9 +12,14 @@ export default function createSidebar(workspacesData) {
 	// nav
 	const sidebarNav = createSidebarNav(workspacesData);
 
-	const showAddWorkspaceDialogButton = createButton("New Workspace", () => {
-		console.log("show dialog");
-	});
+	const showAddWorkspaceDialogButton = createButton(
+		"",
+		["btn"],
+		"New Workspace",
+		() => {
+			console.log("show dialog");
+		},
+	);
 
 	sidebar.appendChild(sidebarHeader);
 	sidebar.appendChild(sidebarNav);
