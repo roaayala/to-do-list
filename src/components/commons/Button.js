@@ -1,7 +1,10 @@
 export default function createButton(id, style, text, callback) {
 	const button = document.createElement("button");
-	button.id = id;
-	button.className = style.join("");
+
+	if (id) button.id = id;
+
+	button.className = style;
+
 	button.textContent = text;
 
 	button.addEventListener("click", (e) => {
