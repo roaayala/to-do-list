@@ -1,4 +1,4 @@
-import createSidebar from "./sidebar.js";
+import createSidebar from "./SidebarLayout.js";
 import createMainPanel from "./MainPanel.js";
 
 export default function createMainLayout(appModel) {
