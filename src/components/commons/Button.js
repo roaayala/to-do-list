@@ -1,4 +1,4 @@
-export default function createButton(id, style, text, callback) {
+export default function createButton(id, style, type, text, callback) {
 	const button = document.createElement("button");
 
 	if (id) {
@@ -7,11 +7,18 @@ export default function createButton(id, style, text, callback) {
 
 	button.className = style;
 
+	button.type = type;
+
 	button.textContent = text;
 
 	button.addEventListener("click", (e) => {
-		e.preventDefault();
-		callback(e);
+		if (type !== "submit") {
+			e.preventDefault();
+		}
+
+		if (callback) {
+			callback(e);
+		}
 	});
 
 	return button;

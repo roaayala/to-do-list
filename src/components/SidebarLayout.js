@@ -18,6 +18,7 @@ export default function createSidebar(workspacesData) {
 	const showAddWorkspaceDialogButton = createButton(
 		"showAddWorkspaceDialog",
 		"btn btn-primary",
+		"button",
 		"New Workspace",
 		showAddWorkspaceDialog.bind(null, "New Workspace Details"),
 	);
