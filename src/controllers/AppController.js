@@ -6,6 +6,11 @@ export default class AppController {
 	constructor(appModel, root) {
 		this.appModel = appModel;
 		this.root = root;
+		this.actions = {
+			log: (data) => {
+				console.log(data);
+			},
+		};
 
 		this.render();
 	}
@@ -13,7 +18,7 @@ export default class AppController {
 	render() {
 		this.root.innerHTML = "";
 
-		const mainLayout = createMainLayout(this.appModel);
+		const mainLayout = createMainLayout(this.appModel, this.actions.log);
 		this.root.appendChild(mainLayout);
 	}
 }
