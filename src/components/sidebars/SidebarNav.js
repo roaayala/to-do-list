@@ -1,3 +1,5 @@
+import createButton from "../commons/Button.js";
+
 export default function createSidebarNav(workspacesData) {
 	const sidebarNav = document.createElement("nav");
 	sidebarNav.className = "sidebar-nav";
@@ -7,12 +9,36 @@ export default function createSidebarNav(workspacesData) {
 	}
 
 	workspacesData.forEach((workspace) => {
-		const workspaceItem = document.createElement("div");
-		workspaceItem.id = workspace.id;
-		workspaceItem.className = "sidebar-nav__item";
-		workspaceItem.textContent = workspace.name;
+		const itemContainer = document.createElement("div");
+		itemContainer.id = workspace.id;
+		itemContainer.className = "sidebar-nav__item";
 
-		sidebarNav.appendChild(workspaceItem);
+		const itemName = document.createElement("span");
+		itemName.className = "sidebar-nav__item-name";
+		itemName.textContent = workspace.name;
+
+		const actionsContainer = document.createElement("div");
+		actionsContainer.className = "sidebar-nav__item-actions-container";
+
+		const showEditWorkspaceDialog = createButton({
+			text: "Edit",
+			callback: () => {
+				console.log("edit click");
+			},
+		});
+
+		const deleteButton = createButton({
+			text: "Delete",
+			callback: () => {
+				console.log("delete click");
+			},
+		});
+
+		actionsContainer.appendChild(showEditWorkspaceDialog);
+		actionsContainer.appendChild(deleteButton);
+		itemContainer.appendChild(itemName);
+		itemContainer.appendChild(actionsContainer);
+		sidebarNav.appendChild(itemContainer);
 	});
 
 	return sidebarNav;
