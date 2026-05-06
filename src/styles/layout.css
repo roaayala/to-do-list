@@ -9,9 +9,23 @@
 	padding: 1rem;
 	flex: 1;
 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.sidebar-nav {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.sidebar-nav__item.sidebar-nav__item--active .sidebar-nav__item-name {
+	font-weight: 700;
 }
 
 .main-panel {
 	padding: 1rem;
-	flex: 4;
+	flex: 3;
 }

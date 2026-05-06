@@ -31,6 +31,8 @@ export default function createSidebarNav(workspaces, actions, activeWorkspace) {
 		const activeItem = activeWorkspace === workspace.id;
 
 		if (activeItem) {
+			itemContainer.className = "sidebar-nav__item sidebar-nav__item--active";
+
 			const editButton = createButton({
 				text: "Edit",
 				callback: (e) => {
