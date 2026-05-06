@@ -25,6 +25,7 @@ export default class AppController {
 			},
 			deleteWorkspace: (id) => {
 				this.models.deleteWorkspace(id);
+				this.activeWorkspace = null;
 				this.render();
 			},
 			setActiveWorkspace: (id) => {
