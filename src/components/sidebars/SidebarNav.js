@@ -30,14 +30,16 @@ export default function createSidebarNav(workspaces, actions, activeWorkspace) {
 		if (activeItem) {
 			const editButton = createButton({
 				text: "Edit",
-				callback: () => {
+				callback: (e) => {
+					e.stopPropagation();
 					workspaceDialog("Edit Workspace", workspace, actions);
 				},
 			});
 
 			const deleteButton = createButton({
 				text: "Delete",
-				callback: () => {
+				callback: (e) => {
+					e.stopPropagation();
 					actions.deleteWorkspace(workspace.id);
 				},
 			});

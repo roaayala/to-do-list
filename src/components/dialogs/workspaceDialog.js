@@ -1,5 +1,5 @@
 import createButton from "../commons/Button.js";
-import workspaceDialogForm from "../forms/WorkspaceDialogForm.js";
+import showWorkspaceDialogForm from "../forms/WorkspaceDialogForm.js";
 
 export default function showWorkspaceDialog(
 	dialogTitle,
@@ -11,18 +11,19 @@ export default function showWorkspaceDialog(
 		dialog.remove();
 	};
 
+	console.log(initialData);
 	const isEdit = !!initialData;
 
 	const dialog = document.createElement("dialog");
 	const headerTitle = document.createElement("h2");
 	headerTitle.textContent = isEdit ? "Edit Workspace" : "Save Workspace";
 
-	const form = workspaceDialogForm({
+	const form = showWorkspaceDialogForm({
 		formId: "workspaceDialogForm",
 		initialData: initialData,
 		onSaveWorkspace: (data) => {
 			if (isEdit) {
-				console.log(initialData);
+				console.log(data);
 			} else {
 				actions.saveWorkspace(data);
 			}

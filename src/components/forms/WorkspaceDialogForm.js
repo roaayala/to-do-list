@@ -2,7 +2,11 @@ import createTextInput from "../commons/TextInput.js";
 import createTextarea from "../commons/Textarea.js";
 import getInputValue from "../../utils/getInputValue.js";
 
-export default function createWorkspaceDialogForm({ formId, onSaveWorkspace }) {
+export default function showWorkspaceDialog({
+	formId,
+	initialData,
+	onSaveWorkspace,
+}) {
 	const form = document.createElement("form");
 	form.id = formId;
 	form.method = "dialog";
@@ -13,14 +17,14 @@ export default function createWorkspaceDialogForm({ formId, onSaveWorkspace }) {
 		id: "workspaceName",
 		type: "text",
 		placeholder: "Write your new workspace name!",
-		value: "",
+		value: initialData ? initialData.name : "",
 	});
 
 	const textarea = createTextarea({
 		label: "Workspace Description",
 		id: "workspaceDescription",
 		placeholder: "Write your new workspace description!",
-		value: "",
+		value: initialData ? initialData.description : "",
 	});
 
 	form.appendChild(textInput);
