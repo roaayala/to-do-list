@@ -21,12 +21,7 @@ export default function createSidebar(workspaces, actions, activeWorkspace) {
 		type: "button",
 		text: "New Workspace",
 		callback: () => {
-			workspaceDialog(
-				"New Workspace Details",
-				workspaces,
-				actions,
-				activeWorkspace,
-			);
+			workspaceDialog("New Workspace Details", null, actions);
 		},
 	});
 

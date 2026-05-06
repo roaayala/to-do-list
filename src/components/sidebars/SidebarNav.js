@@ -1,4 +1,5 @@
 import createButton from "../commons/Button.js";
+import workspaceDialog from "../dialogs/workspaceDialog.js";
 
 export default function createSidebarNav(workspaces, actions, activeWorkspace) {
 	const sidebarNav = document.createElement("nav");
@@ -30,7 +31,7 @@ export default function createSidebarNav(workspaces, actions, activeWorkspace) {
 			const editButton = createButton({
 				text: "Edit",
 				callback: () => {
-					console.log("edit click");
+					workspaceDialog("Edit Workspace", workspace, actions);
 				},
 			});
 

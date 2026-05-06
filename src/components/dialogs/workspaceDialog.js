@@ -3,23 +3,29 @@ import workspaceDialogForm from "../forms/WorkspaceDialogForm.js";
 
 export default function showWorkspaceDialog(
 	dialogTitle,
-	workspaces,
+	initialData = null,
 	actions,
-	activeWorkspace,
 ) {
 	const closeDialog = () => {
 		dialog.close();
 		dialog.remove();
 	};
 
+	const isEdit = !!initialData;
+
 	const dialog = document.createElement("dialog");
 	const headerTitle = document.createElement("h2");
-	headerTitle.textContent = dialogTitle;
+	headerTitle.textContent = isEdit ? "Edit Workspace" : "Save Workspace";
 
-	const addForm = workspaceDialogForm({
+	const form = workspaceDialogForm({
 		formId: "workspaceDialogForm",
+		initialData: initialData,
 		onSaveWorkspace: (data) => {
-			actions.saveWorkspace(data);
+			if (isEdit) {
+				console.log(initialData);
+			} else {
+				actions.saveWorkspace(data);
+			}
 			closeDialog();
 		},
 	});
@@ -39,7 +45,7 @@ export default function showWorkspaceDialog(
 		id: null,
 		style: "btn",
 		type: "submit",
-		text: "Save",
+		text: isEdit ? "Edit" : "Save",
 		callback: () => {},
 	});
 	saveButton.setAttribute("form", "workspaceDialogForm");
@@ -50,7 +56,7 @@ export default function showWorkspaceDialog(
 
 	// dialog
 	dialog.appendChild(headerTitle);
-	dialog.appendChild(addForm);
+	dialog.appendChild(form);
 	dialog.appendChild(dialogActions);
 
 	// app container
