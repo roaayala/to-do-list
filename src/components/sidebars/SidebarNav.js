@@ -6,7 +6,10 @@ export default function createSidebarNav(workspaces, actions, activeWorkspace) {
 	sidebarNav.className = "sidebar-nav";
 
 	if (workspaces.length === 0) {
-		sidebarNav.textContent = "No Workspaces";
+		const emptyNav = document.createElement("span");
+		emptyNav.className = "sidebar-nav__item--empty";
+		emptyNav.textContent = "No workspace";
+		sidebarNav.appendChild(emptyNav);
 	}
 
 	workspaces.forEach((workspace) => {

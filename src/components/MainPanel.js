@@ -3,7 +3,7 @@ export default function createMainPanel() {
 	mainPanel.className = "main-panel";
 
 	const emptyMessage = document.createElement("span");
-	emptyMessage.textContent = "No Workspace Selected";
+	emptyMessage.textContent = "No workspace being selected";
 	mainPanel.appendChild(emptyMessage);
 
 	return mainPanel;
