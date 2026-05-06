@@ -1,6 +1,6 @@
 import createButton from "../commons/Button.js";
 
-export default function createSidebarNav(workspaces) {
+export default function createSidebarNav(workspaces, actions, activeWorkspace) {
 	const sidebarNav = document.createElement("nav");
 	sidebarNav.className = "sidebar-nav";
 
@@ -13,6 +13,10 @@ export default function createSidebarNav(workspaces) {
 		itemContainer.id = workspace.id;
 		itemContainer.className = "sidebar-nav__item";
 
+		itemContainer.addEventListener("click", (e) => {
+			actions.setActiveWorkspace(workspace.id);
+		});
+
 		const itemName = document.createElement("span");
 		itemName.className = "sidebar-nav__item-name";
 		itemName.textContent = workspace.name;
@@ -20,22 +24,27 @@ export default function createSidebarNav(workspaces) {
 		const actionsContainer = document.createElement("div");
 		actionsContainer.className = "sidebar-nav__item-actions-container";
 
-		const editButton = createButton({
-			text: "Edit",
-			callback: () => {
-				console.log("edit click");
-			},
-		});
+		const activeItem = activeWorkspace === workspace.id;
 
-		const deleteButton = createButton({
-			text: "Delete",
-			callback: () => {
-				console.log("delete click");
-			},
-		});
+		if (activeItem) {
+			const editButton = createButton({
+				text: "Edit",
+				callback: () => {
+					console.log("edit click");
+				},
+			});
 
-		actionsContainer.appendChild(editButton);
-		actionsContainer.appendChild(deleteButton);
+			const deleteButton = createButton({
+				text: "Delete",
+				callback: () => {
+					console.log("delete click");
+				},
+			});
+
+			actionsContainer.appendChild(editButton);
+			actionsContainer.appendChild(deleteButton);
+		}
+
 		itemContainer.appendChild(itemName);
 		itemContainer.appendChild(actionsContainer);
 		sidebarNav.appendChild(itemContainer);

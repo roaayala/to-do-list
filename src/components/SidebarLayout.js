@@ -5,7 +5,7 @@ import createButton from "./commons/Button.js";
 import showAddWorkspaceDialog from "./dialogs/workspaceDialog.js";
 import showWorkspaceDialog from "./dialogs/workspaceDialog.js";
 
-export default function createSidebar(workspaces, actions) {
+export default function createSidebar(workspaces, actions, activeWorkspace) {
 	const sidebar = document.createElement("aside");
 	sidebar.className = "sidebar";
 
@@ -13,7 +13,7 @@ export default function createSidebar(workspaces, actions) {
 	const sidebarHeader = createSidebarHeader();
 
 	// nav
-	const sidebarNav = createSidebarNav(workspaces);
+	const sidebarNav = createSidebarNav(workspaces, actions, activeWorkspace);
 
 	// button
 	const showButton = createButton({
