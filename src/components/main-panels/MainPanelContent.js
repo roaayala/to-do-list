@@ -12,7 +12,11 @@ export default function createMainPanelContent({ workspace }) {
 		type: "button",
 		text: "New Project",
 		callback: () => {
-			showItemDialog({ dialogTitle: "New Project Details" });
+			showItemDialog({
+				dialogTitle: "Project Details",
+				formId: "projectDialogForm",
+				initialData: workspace.items,
+			});
 		},
 	});
 

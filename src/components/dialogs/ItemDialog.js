@@ -2,6 +2,7 @@ import createButton from "../commons/Button.js";
 
 export default function showItemDialog({
 	dialogTitle,
+	formId,
 	initialData = null,
 	actions,
 }) {
@@ -10,11 +11,14 @@ export default function showItemDialog({
 		dialog.remove();
 	};
 
+	console.log(initialData);
 	const isEdit = !!initialData;
 
 	const dialog = document.createElement("dialog");
 	const headerTitle = document.createElement("h2");
-	headerTitle.textContent = isEdit ? "Edit Workspace" : "Save Workspace";
+	headerTitle.textContent = isEdit
+		? `Edit ${dialogTitle}`
+		: `Save ${dialogTitle}`;
 
 	// const form = showWorkspaceDialogForm({
 	// 	formId: "workspaceDialogForm",
@@ -47,7 +51,7 @@ export default function showItemDialog({
 		text: isEdit ? "Edit" : "Save",
 		callback: () => {},
 	});
-	saveButton.setAttribute("form", "workspaceDialogForm");
+	saveButton.setAttribute("form", formId);
 
 	// dialog actions
 	dialogActions.appendChild(closeButton);
