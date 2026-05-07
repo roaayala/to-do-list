@@ -1,5 +1,6 @@
 import createEmptyMessage from "./commons/EmptyMessage.js";
 import createMainPanelHeader from "./main-panels/MainPanelHeader.js";
+import createMainPanelMain from "./main-panels/MainPanelMain.js";
 
 export default function createMainPanel(workspaces, actions, activeWorkspace) {
 	const mainPanel = document.createElement("main");
@@ -12,6 +13,7 @@ export default function createMainPanel(workspaces, actions, activeWorkspace) {
 	}
 
 	const workspace = actions.getActiveWorkspace(activeWorkspace)[0];
+
 	const workspaceContainer = document.createElement("div");
 	workspaceContainer.className = "workspace";
 
@@ -20,17 +22,12 @@ export default function createMainPanel(workspaces, actions, activeWorkspace) {
 		description: workspace.description,
 	});
 
-	const workspaceMain = document.createElement("main");
-	workspaceMain.className = "workspace-main";
-
-	if (workspace.projects.items.length === 0) {
-		const emptyMessage = document.createElement("span");
-		emptyMessage.textContent = "No project being added";
-		workspaceMain.appendChild(emptyMessage);
-	}
+	const mainPanelMain = createMainPanelMain({
+		workspace: workspace,
+	});
 
 	mainPanel.appendChild(mainPanelHeader);
-	mainPanel.appendChild(workspaceMain);
+	mainPanel.appendChild(mainPanelMain);
 
 	return mainPanel;
 }
