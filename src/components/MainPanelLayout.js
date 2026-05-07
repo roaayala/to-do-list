@@ -1,3 +1,4 @@
+import createEmptyMessage from "./commons/EmptyMessage.js";
 import createMainPanelHeader from "./main-panels/MainPanelHeader.js";
 
 export default function createMainPanel(workspaces, actions, activeWorkspace) {
@@ -5,8 +6,7 @@ export default function createMainPanel(workspaces, actions, activeWorkspace) {
 	mainPanel.className = "main-panel";
 
 	if (!activeWorkspace) {
-		const emptyMessage = document.createElement("span");
-		emptyMessage.textContent = "No workspace being selected";
+		const emptyMessage = createEmptyMessage("No workspace being selected!");
 		mainPanel.appendChild(emptyMessage);
 		return mainPanel;
 	}
