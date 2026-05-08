@@ -48,6 +48,7 @@ export default function showItemDialog({
 			label: "Project Date",
 			id: "projectDate",
 		},
+		selectInputElement: { label: "Project Priority", id: "projectPriority" },
 	});
 
 	const dialogActions = document.createElement("div");

@@ -1,6 +1,7 @@
 import createTextInput from "../commons/TextInput.js";
 import createTextarea from "../commons/Textarea.js";
 import createDateInput from "../commons/DateInput.js";
+import createSelect from "../commons/Select.js";
 import getInputValue from "../../utils/getInputValue.js";
 
 export default function createItemDialogForm({
@@ -10,6 +11,7 @@ export default function createItemDialogForm({
 	textInputElement = { label, id, type, placeholder },
 	textareaElement = { label, id, placeholder },
 	dateInputElement = { label, id },
+	selectInputElement = { label, id },
 }) {
 	const form = document.createElement("form");
 	form.id = formId;
@@ -36,9 +38,16 @@ export default function createItemDialogForm({
 		value: initialData ? initialData.name : "",
 	});
 
+	const selectInput = createSelect({
+		label: selectInputElement.label,
+		id: selectInputElement.id,
+		value: initialData ? initialData.name : "",
+	});
+
 	form.appendChild(textInput);
 	form.appendChild(textarea);
 	form.appendChild(dateInput);
+	form.appendChild(selectInput);
 
 	form.addEventListener("submit", (e) => {
 		e.preventDefault();
@@ -46,6 +55,7 @@ export default function createItemDialogForm({
 			name: getInputValue(form, textInputElement.id),
 			description: getInputValue(form, textareaElement.id),
 			dueDate: getInputValue(form, dateInputElement.id),
+			priority: getInputValue(form, selectInputElement.id),
 		};
 
 		onSaveForm(data);
