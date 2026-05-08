@@ -1,3 +1,4 @@
+import { da } from "date-fns/locale";
 import createButton from "../commons/Button.js";
 import createItemDialogForm from "../forms/ItemDialogForm.js";
 
@@ -27,9 +28,27 @@ export default function showItemDialog({
 		initialData: initialData,
 		onSaveForm: (data) => {
 			if (isEdit) {
+				console.log(data);
 			} else {
+				console.log(data);
 			}
 			closeDialog();
+		},
+		textInputElement: {
+			label: "Project Name",
+			id: "projectName",
+			type: "text",
+			placeholder: "Write your new project name",
+		},
+		textareaElement: {
+			label: "Project Description",
+			id: "projectDescription",
+			placeholder: "Write your new project name",
+		},
+		dateInputElement: {
+			label: "Project Date",
+			id: "projectDate",
+			type: "date",
 		},
 	});
 
