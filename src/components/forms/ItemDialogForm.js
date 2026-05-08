@@ -9,7 +9,7 @@ export default function createItemDialogForm({
 	onSaveForm,
 	textInputElement = { label, id, type, placeholder },
 	textareaElement = { label, id, placeholder },
-	dateInputElement = { label, id, type },
+	dateInputElement = { label, id },
 }) {
 	const form = document.createElement("form");
 	form.id = formId;
@@ -34,7 +34,6 @@ export default function createItemDialogForm({
 	const dateInput = createDateInput({
 		label: dateInputElement.label,
 		id: dateInputElement.id,
-		type: dateInputElement.type,
 		value: initialData ? initialData.name : "",
 	});
 

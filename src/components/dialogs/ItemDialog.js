@@ -48,7 +48,6 @@ export default function showItemDialog({
 		dateInputElement: {
 			label: "Project Date",
 			id: "projectDate",
-			type: "date",
 		},
 	});
 

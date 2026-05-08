@@ -1,7 +1,6 @@
 export default function createDateInput({
 	label = "",
 	id = "",
-	type = "",
 	placeholder = "",
 	value = "",
 }) {
@@ -14,7 +13,7 @@ export default function createDateInput({
 	dateInputLabel.className = "label";
 
 	const dateInput = document.createElement("input");
-	dateInput.type = type;
+	dateInput.type = "date";
 	dateInput.id = id;
 	dateInput.name = id;
 	dateInput.placeholder = placeholder;
