@@ -3,7 +3,6 @@ import createButton from "../commons/Button.js";
 import showItemDialog from "../dialogs/ItemDialog.js";
 
 export default function createMainPanelContent({ workspace }) {
-	console.log(workspace);
 	const mainPanelContent = document.createElement("main");
 	mainPanelContent.className = "workspace-content";
 

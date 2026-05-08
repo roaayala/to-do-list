@@ -30,7 +30,7 @@ export default function showItemDialog({
 			if (isEdit) {
 				console.log(data);
 			} else {
-				console.log(data);
+				console.log(data.dueDate ? new Date(data.dueDate).toISOString() : "");
 			}
 			closeDialog();
 		},

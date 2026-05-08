@@ -2,7 +2,6 @@ import createButton from "../commons/Button.js";
 import workspaceDialog from "../dialogs/workspaceDialog.js";
 
 export default function createSidebarNav(workspaces, actions, activeWorkspace) {
-	console.log(workspaces);
 	const sidebarNav = document.createElement("nav");
 	sidebarNav.className = "sidebar-nav";
 
