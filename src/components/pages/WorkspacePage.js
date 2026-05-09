@@ -1,6 +1,6 @@
 import createPageHeader from "./PageHeader.js";
 import createPageContent from "./PageContent.js";
-import createPageActions from "./PageAction.js";
+import createPageAction from "./PageAction.js";
 
 import createEmptyMessage from "../commons/EmptyMessage.js";
 
@@ -22,7 +22,7 @@ export default function createWorkspacePage({ workspace, actions }) {
 
 	const workspaceContent = createPageContent({ workspace: workspace });
 
-	const workspaceActions = createPageActions();
+	const workspaceActions = createPageAction({ workspace, actions });
 
 	pageWrapper.appendChild(workspaceHeader);
 	pageWrapper.appendChild(workspaceContent);

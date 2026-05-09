@@ -1,9 +1,9 @@
 import createButton from "../commons/Button.js";
 import showItemDialog from "../dialogs/ItemDialog.js";
 
-export default function createPageActions() {
-	const actions = document.createElement("div");
-	actions.className = "page-actions";
+export default function createPageAction({ workspace, actions }) {
+	const action = document.createElement("div");
+	action.className = "page-action";
 
 	const showButton = createButton({
 		id: "projectDialog",
@@ -15,11 +15,13 @@ export default function createPageActions() {
 				dialogTitle: "Project Details",
 				formId: "projectDialogForm",
 				initialData: null,
+				onSave: actions.saveProject,
+				onEdit: actions.ediProject,
 			});
 		},
 	});
 
-	actions.appendChild(showButton);
+	action.appendChild(showButton);
 
-	return actions;
+	return action;
 }

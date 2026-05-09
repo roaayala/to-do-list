@@ -19,6 +19,9 @@ export default function createPageContent({ workspace, actions }) {
 		itemContainer.id = project.id;
 		itemContainer.className = "project-item";
 
+		const itemName = document.createElement("span");
+		itemName.textContent = project.name;
+
 		const editButton = createButton({
 			text: "Edit",
 			callback: (e) => {
