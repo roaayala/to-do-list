@@ -1,4 +1,3 @@
-import { da } from "date-fns/locale";
 import createButton from "../commons/Button.js";
 import createItemDialogForm from "../forms/ItemDialogForm.js";
 
