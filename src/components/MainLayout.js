@@ -1,7 +1,14 @@
 import createSidebar from "./SidebarLayout.js";
-import createMainPanel from "./MainPanelLayout.js";
+import createWorkspacePage from "./pages/WorkspacePage.js";
 
-export default function createMainLayout(models, actions, activeWorkspace) {
+export default function createMainLayout(
+	models,
+	actions,
+	activeWorkspace,
+	activeProject,
+	activeTask,
+	activeTodo,
+) {
 	const workspaces = models.workspaces.items;
 
 	const container = document.createElement("div");
@@ -9,19 +16,19 @@ export default function createMainLayout(models, actions, activeWorkspace) {
 
 	const sidebar = createSidebar(workspaces, actions, activeWorkspace);
 
+	// append to container
+	container.appendChild(sidebar);
+
 	const currentWorkspace = workspaces.find(
 		(workspace) => workspace.id === activeWorkspace,
 	);
 
-	const mainPanel = createMainPanel({
+	const workspacePage = createWorkspacePage({
 		workspace: currentWorkspace,
-		actions,
-		activeWorkspace,
+		actions: actions,
 	});
 
-	// append to container
-	container.appendChild(sidebar);
-	container.appendChild(mainPanel);
+	container.appendChild(workspacePage);
 
 	return container;
 }

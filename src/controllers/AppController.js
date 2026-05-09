@@ -88,6 +88,9 @@ export default class AppController {
 			this.models,
 			this.actions,
 			this.activeWorkspace,
+			this.activeProject,
+			this.activeTask,
+			this.activeTodo,
 		);
 		this.root.appendChild(mainLayout);
 	}
