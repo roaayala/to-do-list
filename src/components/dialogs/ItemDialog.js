@@ -5,7 +5,6 @@ export default function showItemDialog({
 	dialogTitle,
 	formId,
 	initialData = null,
-	actions,
 	onSave,
 	onEdit,
 }) {
@@ -27,9 +26,9 @@ export default function showItemDialog({
 		initialData: initialData,
 		onSaveForm: (data) => {
 			if (isEdit) {
-				console.log(data);
+				onEdit(data);
 			} else {
-				console.log(data.dueDate ? new Date(data.dueDate).toISOString() : "");
+				onSave(data);
 			}
 			closeDialog();
 		},

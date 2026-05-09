@@ -9,7 +9,15 @@ export default function createMainLayout(models, actions, activeWorkspace) {
 
 	const sidebar = createSidebar(workspaces, actions, activeWorkspace);
 
-	const mainPanel = createMainPanel(workspaces, actions, activeWorkspace);
+	const currentWorkspace = workspaces.find(
+		(workspace) => workspace.id === activeWorkspace,
+	);
+
+	const mainPanel = createMainPanel({
+		workspace: currentWorkspace,
+		actions,
+		activeWorkspace,
+	});
 
 	// append to container
 	container.appendChild(sidebar);

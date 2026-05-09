@@ -2,9 +2,16 @@ import createEmptyMessage from "../commons/EmptyMessage.js";
 import createButton from "../commons/Button.js";
 import showItemDialog from "../dialogs/ItemDialog.js";
 
-export default function createMainPanelContent({ workspace }) {
+export default function createMainPanelContent({ workspace, actions }) {
 	const mainPanelContent = document.createElement("main");
 	mainPanelContent.className = "workspace-content";
+
+	if (!workspace) {
+		const emptyMessage = createEmptyMessage("No project being added!");
+		mainPanelContent.appendChild(emptyMessage);
+		mainPanelContent.appendChild(showButton);
+		return mainPanelContent;
+	}
 
 	const showButton = createButton({
 		id: "projectDialog",
@@ -15,17 +22,12 @@ export default function createMainPanelContent({ workspace }) {
 			showItemDialog({
 				dialogTitle: "Project Details",
 				formId: "projectDialogForm",
-				initialData: workspace.items,
+				initialData: null,
+				onSave: actions.saveProject,
+				onEdit: actions.editProject,
 			});
 		},
 	});
-
-	if (workspace.projects.items.length === 0) {
-		const emptyMessage = createEmptyMessage("No project being added!");
-		mainPanelContent.appendChild(emptyMessage);
-		mainPanelContent.appendChild(showButton);
-		return mainPanelContent;
-	}
 
 	mainPanelContent.appendChild(showButton);
 

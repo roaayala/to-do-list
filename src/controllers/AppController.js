@@ -25,8 +25,12 @@ export default class AppController {
 				this.activeWorkspace = null;
 				this.render();
 			},
-			saveProject: () => {},
-			editProject: () => {},
+			saveProject: (data) => {
+				console.log(data);
+			},
+			editProject: (data) => {
+				console.log(data);
+			},
 			deleteProject: () => {},
 			setActiveWorkspace: (id) => {
 				this.activeWorkspace = id;
