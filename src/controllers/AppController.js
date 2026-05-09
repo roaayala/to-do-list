@@ -47,7 +47,21 @@ export default class AppController {
 			editProject: (data) => {
 				console.log(data);
 			},
-			deleteProject: () => {},
+			deleteProject: (id) => {
+				const currentWorkspace = this.models.workspaces.items.find(
+					(workspace) => this.activeWorkspace === workspace.id,
+				);
+
+				if (currentWorkspace) {
+					currentWorkspace.deleteProject(id);
+				}
+
+				if (this.activeProject === id) {
+					this.activeProject = null;
+				}
+
+				this.render();
+			},
 			setActiveWorkspace: (id) => {
 				this.activeWorkspace = id;
 				this.activeProject = null;

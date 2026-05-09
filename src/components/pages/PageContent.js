@@ -34,7 +34,7 @@ export default function createPageContent({ workspace, actions }) {
 			text: "Delete",
 			callback: (e) => {
 				e.stopPropagation();
-				console.log("delete");
+				actions.deleteProject(project.id);
 			},
 		});
 

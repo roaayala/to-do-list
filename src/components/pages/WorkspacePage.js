@@ -20,12 +20,18 @@ export default function createWorkspacePage({ workspace, actions }) {
 		description: workspace.description,
 	});
 
-	const workspaceContent = createPageContent({ workspace: workspace });
+	const workspaceContent = createPageContent({
+		workspace: workspace,
+		actions: actions,
+	});
 
-	const workspaceActions = createPageAction({ workspace, actions });
+	const workspaceAction = createPageAction({
+		workspace: workspace,
+		actions: actions,
+	});
 
 	pageWrapper.appendChild(workspaceHeader);
 	pageWrapper.appendChild(workspaceContent);
-	pageWrapper.appendChild(workspaceActions);
+	pageWrapper.appendChild(workspaceAction);
 	return pageWrapper;
 }
