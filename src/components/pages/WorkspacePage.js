@@ -22,7 +22,10 @@ export default function createWorkspacePage({ workspace, actions }) {
 
 	const workspaceContent = createPageContent({ workspace: workspace });
 
+	const workspaceActions = createPageActions();
+
 	pageWrapper.appendChild(workspaceHeader);
 	pageWrapper.appendChild(workspaceContent);
+	pageWrapper.appendChild(workspaceActions);
 	return pageWrapper;
 }
