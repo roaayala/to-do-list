@@ -71,20 +71,27 @@ export default class AppController {
 			saveTask: (data) => {
 				const currentProject = this.getCurrentProject();
 				if (currentProject) {
+					currentProject.saveTask(
+						data.name,
+						data.description,
+						data.dueDate,
+						data.priority,
+					);
 				}
-				console.log(data);
+
 				this.render();
 			},
 			editTask: (data) => {
 				const currentProject = this.getCurrentProject();
 				if (currentProject) {
+					currentProject.editTask(data);
 				}
 				this.render();
-				console.log(data);
 			},
 			deleteTask: (id) => {
 				const currentProject = this.getCurrentProject();
 				if (currentProject) {
+					currentProject.deleteTask(id);
 				}
 
 				if (this.activeTask === id) {
@@ -92,7 +99,6 @@ export default class AppController {
 				}
 
 				this.render();
-				console.log(id);
 			},
 			setActiveWorkspace: (id) => {
 				this.activeWorkspace = id;
@@ -137,7 +143,7 @@ export default class AppController {
 	getCurrentProject() {
 		const currentWorkspace = this.getCurrentWorkspace();
 
-		return currentWorkspace()?.projects.items.find(
+		return currentWorkspace?.projects.items.find(
 			(project) => project.id === this.activeProject,
 		);
 	}
