@@ -15,6 +15,9 @@ export default function createPageHeader({
 		? description
 		: "No description being added";
 
+	header.appendChild(headerName);
+	header.appendChild(headerDescription);
+
 	if (dueDate) {
 		const headerDueDate = document.createElement("span");
 		headerDueDate.textContent = dueDate;
@@ -26,9 +29,6 @@ export default function createPageHeader({
 		headerPriority.textContent = priority;
 		header.appendChild(headerPriority);
 	}
-
-	header.appendChild(headerName);
-	header.appendChild(headerDescription);
 
 	return header;
 }

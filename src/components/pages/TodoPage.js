@@ -4,24 +4,22 @@ import createPageAction from "./PageAction.js";
 
 import createEmptyMessage from "../commons/EmptyMessage.js";
 
-export default function createProjectPage({ project, actions }) {
+export default function createProjectPage({ task, actions }) {
 	const pageWrapper = document.createElement("div");
 	pageWrapper.className = "page-wrapper";
 
-	const projectHeader = createPageHeader({
-		name: project.name,
-		description: project.description,
-		dueDate: project.dueDate,
-		priority: project.priority,
+	const taskHeader = createPageHeader({
+		name: task.name,
+		description: task.description,
 	});
-	pageWrapper.appendChild(projectHeader);
+	pageWrapper.appendChild(taskHeader);
 
-	const tasks = project.tasks.items;
+	const todos = task.todo.items;
 
-	const projectContent = createPageContent({
-		items: tasks,
+	const taskContent = createPageContent({
+		items: todos,
 		actions: actions,
-		emptyMessageText: "No task being added!",
+		emptyMessageText: "No todo being added!",
 		setActiveItem: actions.setActiveTask,
 		dialogConfig: {
 			title: "Task",
@@ -32,7 +30,7 @@ export default function createProjectPage({ project, actions }) {
 		onDelete: actions.deleteTask,
 	});
 
-	const projectAction = createPageAction({
+	const taskAction = createPageAction({
 		buttonElement: { text: "New Task" },
 		itemDialogElement: {
 			title: "Task Details",
@@ -43,9 +41,9 @@ export default function createProjectPage({ project, actions }) {
 		},
 	});
 
-	pageWrapper.appendChild(projectHeader);
-	pageWrapper.appendChild(projectContent);
-	pageWrapper.appendChild(projectAction);
+	pageWrapper.appendChild(taskHeader);
+	pageWrapper.appendChild(taskContent);
+	pageWrapper.appendChild(taskAction);
 
 	return pageWrapper;
 }
