@@ -4,11 +4,7 @@ import createPageAction from "./PageAction.js";
 
 import createEmptyMessage from "../commons/EmptyMessage.js";
 
-export default function createWorkspacePage({
-	workspace,
-	actions,
-	activeProject,
-}) {
+export default function createWorkspacePage({ workspace, actions }) {
 	const pageWrapper = document.createElement("div");
 	pageWrapper.className = "page-wrapper";
 
@@ -24,10 +20,20 @@ export default function createWorkspacePage({
 		description: workspace.description,
 	});
 
+	const projects = workspace.projects.items;
+
 	const workspaceContent = createPageContent({
-		workspace: workspace,
+		items: projects,
 		actions: actions,
-		activeProject: activeProject,
+		emptyMessageText: "No project being added!",
+		setActiveItem: actions.setActiveProject,
+		dialogConfig: {
+			title: "Project",
+			formId: "projectFormDialog",
+			onSaveItem: actions.saveProject,
+			onEditItem: actions.editProject,
+		},
+		onDelete: actions.deleteProject,
 	});
 
 	const workspaceAction = createPageAction({

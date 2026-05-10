@@ -3,32 +3,33 @@ import createEmptyMessage from "../commons/EmptyMessage.js";
 import showItemDialog from "../dialogs/ItemDialog.js";
 
 export default function createPageContent({
-	workspace,
+	items,
 	actions,
-	activeProject,
+	emptyMessageText,
+	setActiveItem,
+	dialogConfig = { title, formId, onSaveItem, onEditItem },
+	onDelete,
 }) {
 	const pageContent = document.createElement("main");
 	pageContent.className = "page-content";
 
-	const projects = workspace.projects.items;
-
-	if (projects.length === 0) {
-		const emptyMessage = createEmptyMessage("No project being added!");
+	if (items.length === 0) {
+		const emptyMessage = createEmptyMessage(emptyMessageText);
 		pageContent.appendChild(emptyMessage);
 
 		return pageContent;
 	}
 
-	projects.forEach((project) => {
+	items.forEach((item) => {
 		const itemContainer = document.createElement("div");
-		itemContainer.id = project.id;
-		itemContainer.className = "project-item";
+		itemContainer.id = item.id;
+		itemContainer.className = "item-container";
 
 		const itemName = document.createElement("span");
-		itemName.textContent = project.name;
+		itemName.textContent = item.name;
 
 		itemName.addEventListener("click", () => {
-			actions.setActiveProject(project.id);
+			setActiveItem(item.id);
 		});
 
 		const editButton = createButton({
@@ -36,11 +37,11 @@ export default function createPageContent({
 			callback: (e) => {
 				e.stopPropagation();
 				showItemDialog({
-					title: "Project",
-					formId: "projectDialogForm",
-					initialData: project,
-					onSave: actions.saveProject,
-					onEdit: actions.editProject,
+					title: dialogConfig.title,
+					formId: dialogConfig.formId,
+					initialData: item,
+					onSave: dialogConfig.onSaveItem,
+					onEdit: dialogConfig.onEditItem,
 				});
 			},
 		});
@@ -49,7 +50,7 @@ export default function createPageContent({
 			text: "Delete",
 			callback: (e) => {
 				e.stopPropagation();
-				actions.deleteProject(project.id);
+				onDelete(item.id);
 			},
 		});
 

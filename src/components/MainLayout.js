@@ -1,5 +1,6 @@
 import createSidebar from "./SidebarLayout.js";
 import createWorkspacePage from "./pages/WorkspacePage.js";
+import createProjectPage from "./pages/ProjectPage.js";
 
 export default function createMainLayout(
 	models,
@@ -24,7 +25,16 @@ export default function createMainLayout(
 	);
 
 	if (activeProject) {
-		console.log("project");
+		// const currentProject = currentWorkspace.projects.items.find(
+		// 	(project) => project.id === activeProject,
+		// );
+
+		// const projectPage = createProjectPage({
+		// 	project: currentProject,
+		// 	actions: actions,
+		// });
+
+		// container.appendChild(projectPage);
 
 		if (activeTask) {
 			if (activeTodo) {
