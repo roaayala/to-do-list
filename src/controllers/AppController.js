@@ -26,6 +26,9 @@ export default class AppController {
 			deleteWorkspace: (id) => {
 				this.models.deleteWorkspace(id);
 				this.activeWorkspace = null;
+				this.activeProject = null;
+				this.activeTask = null;
+				this.activeTodo = null;
 				this.render();
 			},
 			saveProject: (data) => {
