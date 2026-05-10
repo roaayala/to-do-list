@@ -21,7 +21,7 @@ export default function createPageAction({
 		text: buttonElement.text,
 		callback: () => {
 			showItemDialog({
-				dialogTitle: itemDialogElement.title,
+				title: itemDialogElement.title,
 				formId: itemDialogElement.id,
 				initialData: itemDialogElement.initialData,
 				onSave: itemDialogElement.onSave,
