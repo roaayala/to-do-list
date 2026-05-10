@@ -33,9 +33,7 @@ export default class AppController {
 				this.render();
 			},
 			saveProject: (data) => {
-				const currentWorkspace = this.models.workspaces.items.find(
-					(workspace) => this.activeWorkspace === workspace.id,
-				);
+				const currentWorkspace = this.getCurrentWorkspace();
 
 				if (currentWorkspace) {
 					currentWorkspace.saveProject(
@@ -49,9 +47,7 @@ export default class AppController {
 				this.render();
 			},
 			editProject: (editedWorkspace) => {
-				const currentWorkspace = this.models.workspaces.items.find(
-					(workspace) => this.activeWorkspace === workspace.id,
-				);
+				const currentWorkspace = this.getCurrentWorkspace();
 
 				if (currentWorkspace) {
 					currentWorkspace.editProject(editedWorkspace);
@@ -60,9 +56,7 @@ export default class AppController {
 				this.render();
 			},
 			deleteProject: (id) => {
-				const currentWorkspace = this.models.workspaces.items.find(
-					(workspace) => this.activeWorkspace === workspace.id,
-				);
+				const currentWorkspace = this.getCurrentWorkspace();
 
 				if (currentWorkspace) {
 					currentWorkspace.deleteProject(id);
@@ -75,12 +69,29 @@ export default class AppController {
 				this.render();
 			},
 			saveTask: (data) => {
+				const currentProject = this.getCurrentProject();
+				if (currentProject) {
+				}
 				console.log(data);
+				this.render();
 			},
 			editTask: (data) => {
+				const currentProject = this.getCurrentProject();
+				if (currentProject) {
+				}
+				this.render();
 				console.log(data);
 			},
 			deleteTask: (id) => {
+				const currentProject = this.getCurrentProject();
+				if (currentProject) {
+				}
+
+				if (this.activeTask === id) {
+					this.activeTask = null;
+				}
+
+				this.render();
 				console.log(id);
 			},
 			setActiveWorkspace: (id) => {
@@ -107,7 +118,7 @@ export default class AppController {
 				this.render();
 			},
 
-			getActiveWorkspace: (id) => {
+			getCurrentWorkspace: (id) => {
 				return this.models.workspaces.items.filter(
 					(workspace) => workspace.id === this.activeWorkspace,
 				);
@@ -115,6 +126,20 @@ export default class AppController {
 		};
 
 		this.render();
+	}
+
+	getCurrentWorkspace() {
+		return this.models.workspaces.items.find(
+			(workspace) => this.activeWorkspace === workspace.id,
+		);
+	}
+
+	getCurrentProject() {
+		const currentWorkspace = this.getCurrentWorkspace();
+
+		return currentWorkspace()?.projects.items.find(
+			(project) => project.id === this.activeProject,
+		);
 	}
 
 	render() {
