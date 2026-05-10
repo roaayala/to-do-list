@@ -101,9 +101,10 @@ export default class AppController {
 				this.render();
 			},
 			saveTodo: (data) => {
-				const currentTodo = this.getCurrentTodo();
-				if (currentTodo) {
-					currentTodo.saveTodo(
+				const currentTask = this.getCurrentTask();
+
+				if (currentTask) {
+					currentTask.saveTodo(
 						data.name,
 						data.description,
 						data.dueDate,
@@ -121,7 +122,7 @@ export default class AppController {
 				}
 				this.render();
 			},
-			saveTodo: (id) => {
+			deleteTodo: (id) => {
 				const currentTask = this.getCurrentTask();
 				if (currentTask) {
 					currentTask.deleteTodo(id);
@@ -130,6 +131,7 @@ export default class AppController {
 				if (this.activeTodo === id) {
 					this.activeTodo = null;
 				}
+
 				this.render();
 			},
 			setActiveWorkspace: (id) => {

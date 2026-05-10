@@ -24,22 +24,22 @@ export default function createTaskPage({ task, actions }) {
 		emptyMessageText: "No todo being added!",
 		setActiveItem: actions.setActiveTodo,
 		dialogConfig: {
-			title: "Task",
-			formId: "taskDialogForm",
-			onSaveItem: actions.saveTask,
-			onEditItem: actions.EditTask,
+			title: "Todo",
+			formId: "todoDialogForm",
+			onSaveItem: actions.saveTodo,
+			onEditItem: actions.editTodo,
 		},
-		onDelete: actions.deleteTask,
+		onDelete: actions.deleteTodo,
 	});
 
 	const taskAction = createPageAction({
 		buttonElement: { text: "New Todo" },
 		itemDialogElement: {
-			title: "Task Details",
-			formId: "taskDialogForm",
+			title: "Todo Details",
+			formId: "todoDialogForm",
 			initialData: null,
-			onSave: actions.saveTask,
-			onEdit: actions.EditTask,
+			onSave: actions.saveTodo,
+			onEdit: actions.EditTodo,
 		},
 	});
 

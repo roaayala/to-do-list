@@ -12,12 +12,16 @@ export default class Task {
 		this.todos = new Collection();
 	}
 
-	saveTask(name, description, dueDate, priority) {
+	saveTodo(name, description, dueDate, priority) {
 		const newTodo = new Todo(name, description, dueDate, priority);
 		return this.todos.save(newTodo);
 	}
 
-	deleteTask(id) {
+	editTodo(todo) {
+		this.todos.edit(todo);
+	}
+
+	deleteTodo(id) {
 		this.todos.delete(id);
 	}
 
