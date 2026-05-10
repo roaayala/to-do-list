@@ -16,6 +16,10 @@ export default class Workspace {
 		return this.projects.save(newProject);
 	}
 
+	editProject(project) {
+		this.projects.edit(project);
+	}
+
 	deleteProject(id) {
 		this.projects.delete(id);
 	}

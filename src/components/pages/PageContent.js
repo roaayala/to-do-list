@@ -1,5 +1,6 @@
 import createButton from "../commons/Button.js";
 import createEmptyMessage from "../commons/EmptyMessage.js";
+import showItemDialog from "../dialogs/ItemDialog.js";
 
 export default function createPageContent({ workspace, actions }) {
 	const pageContent = document.createElement("main");
@@ -26,7 +27,13 @@ export default function createPageContent({ workspace, actions }) {
 			text: "Edit",
 			callback: (e) => {
 				e.stopPropagation();
-				console.log("edit");
+				showItemDialog({
+					title: "Edit Project",
+					formId: "projectDialogForm",
+					initialData: project,
+					onSave: actions.saveProject,
+					onEdit: actions.editProject,
+				});
 			},
 		});
 

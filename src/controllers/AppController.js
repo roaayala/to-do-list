@@ -44,8 +44,12 @@ export default class AppController {
 
 				this.render();
 			},
-			editProject: (data) => {
-				console.log(data);
+			editProject: (editedWorkspace) => {
+				console.log(editedWorkspace);
+				// const currentWorkspace = this.models.workspaces.items.find(
+				// 	(workspace) => this.activeWorkspace === workspace.id,
+				// );
+				// this.render();
 			},
 			deleteProject: (id) => {
 				const currentWorkspace = this.models.workspaces.items.find(

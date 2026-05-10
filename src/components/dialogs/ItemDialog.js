@@ -2,7 +2,7 @@ import createButton from "../commons/Button.js";
 import createItemDialogForm from "../forms/ItemDialogForm.js";
 
 export default function showItemDialog({
-	dialogTitle,
+	title,
 	formId,
 	initialData = null,
 	onSave,
@@ -17,16 +17,14 @@ export default function showItemDialog({
 
 	const dialog = document.createElement("dialog");
 	const headerTitle = document.createElement("h2");
-	headerTitle.textContent = isEdit
-		? `Edit ${dialogTitle}`
-		: `Save ${dialogTitle}`;
+	headerTitle.textContent = isEdit ? `Edit ${title}` : `Save ${title}`;
 
 	const form = createItemDialogForm({
 		formId: formId,
 		initialData: initialData,
 		onSaveForm: (data) => {
 			if (isEdit) {
-				onEdit(data);
+				onEdit({ id: initialData.id, ...data });
 			} else {
 				onSave(data);
 			}
