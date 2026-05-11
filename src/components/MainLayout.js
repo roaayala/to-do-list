@@ -1,8 +1,17 @@
-export default function createMainLayout(models, actions) {
+import createSidebar from "./sidebar/Sidebar.js";
+import createMainPanel from "./main-panel/MainPanel";
+
+export default function createMainLayout(models) {
 	const workspaces = models.workspaces.items;
 
 	const container = document.createElement("div");
 	container.className = "container";
 
+	const sidebar = createSidebar();
+	const mainPanel = createMainPanel();
+
+	// appendChild
+	container.appendChild(sidebar);
+	container.appendChild(mainPanel);
 	return container;
 }
