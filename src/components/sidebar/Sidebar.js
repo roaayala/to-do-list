@@ -11,6 +11,8 @@ export default function createSidebar() {
 	// content
 
 	// actions
+	const sidebarAction = document.createElement("footer");
+	sidebarAction.className = "sidebar__action";
 
 	return sidebar;
 }

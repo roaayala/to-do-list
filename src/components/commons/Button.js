@@ -1,19 +1,25 @@
 export default function createButton({
-	id,
-	style,
+	id = null,
+	style = "btn",
 	type = "button",
-	text,
+	icon = "",
+	text = "",
 	callback,
 }) {
 	const button = document.createElement("button");
 
 	if (id) button.id = id;
-
-	if (style) button.className = style;
-
+	button.className = style;
 	button.type = type;
 
-	button.textContent = text;
+	if (icon) {
+		const iconElement = document.createElement("span");
+	}
+
+	if (text) {
+		if (icon) {
+		}
+	}
 
 	button.addEventListener("click", (e) => {
 		if (type !== "submit") {
