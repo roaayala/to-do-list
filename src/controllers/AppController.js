@@ -1,3 +1,5 @@
+import WorkspaceController from "./WorkspaceController.js";
+
 import createMainLayout from "../components/MainLayout.js";
 
 export default class AppController {
@@ -14,6 +16,8 @@ export default class AppController {
     this.activeTodo = null;
 
     this.actions = {};
+
+    this.workspaceController = new WorkspaceController(this.models.workspaces);
 
     this.render();
   }
