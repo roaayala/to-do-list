@@ -1,18 +1,21 @@
-import App from "../models/App.js";
 import createMainLayout from "../components/MainLayout.js";
 
 export default class AppController {
-	constructor(app, root) {
-		this.app = app;
-		this.root = root;
+  constructor(root) {
+    this.root = root;
 
-		this.render();
-	}
+    this.models = {
+      workspaces: [],
+    };
 
-	render() {
-		this.root.innerHTML = "";
+    this.activeWorkspace = null;
+    this.render();
+  }
 
-		const mainLayout = createMainLayout(this.app);
-		this.root.appendChild(mainLayout);
-	}
+  render() {
+    this.root.innerHTML = "";
+
+    const mainLayout = createMainLayout(this.models);
+    this.root.appendChild(mainLayout);
+  }
 }
