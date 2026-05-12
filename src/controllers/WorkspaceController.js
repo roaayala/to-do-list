@@ -18,4 +18,6 @@ export default class WorkspaceController {
   }
 
   removeWorkspace(id) {}
+
+  editWorkspace(editedWorkspace) {}
 }

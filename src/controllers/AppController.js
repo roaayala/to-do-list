@@ -9,6 +9,11 @@ export default class AppController {
     };
 
     this.activeWorkspace = null;
+    this.activeProject = null;
+    this.activeTask = null;
+    this.activeTodo = null;
+
+    this.actions = {};
 
     this.render();
   }
