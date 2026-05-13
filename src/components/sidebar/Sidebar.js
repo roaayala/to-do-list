@@ -1,18 +1,35 @@
 import createSidebarHeader from "./SidebarHeader.js";
+import createButton from "../commons/Button.js";
 
-export default function createSidebar() {
-	const sidebar = document.createElement("aside");
-	sidebar.className = "sidebar";
+export default function createSidebar({
+  workspaces,
+  actions,
+  activeWorkspace,
+}) {
+  const sidebar = document.createElement("aside");
+  sidebar.className = "sidebar";
 
-	// header
-	const sidebarHeader = createSidebarHeader();
-	sidebar.appendChild(sidebarHeader);
+  // header
+  const sidebarHeader = createSidebarHeader();
+  sidebar.appendChild(sidebarHeader);
 
-	// content
+  // content
+  const sidebarNav = document.createElement("nav");
+  sidebarNav.className = "sidebar__nav";
 
-	// actions
-	const sidebarAction = document.createElement("footer");
-	sidebarAction.className = "sidebar__action";
+  if (workspaces.length === 0) {
+    sidebarNav.textContent = "Workspace empty!";
+  }
+  sidebar.appendChild(sidebarNav);
 
-	return sidebar;
+  // actions
+  const sidebarAction = document.createElement("div");
+  sidebarAction.className = "sidebar__action";
+
+  const addButton = createButton({ text: "New Workspace" });
+  sidebarAction.appendChild(addButton);
+
+  sidebar.appendChild(sidebarAction);
+
+  return sidebar;
 }

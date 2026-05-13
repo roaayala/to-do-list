@@ -43,7 +43,11 @@ export default class AppController {
   render() {
     this.root.innerHTML = "";
 
-    const mainLayout = createMainLayout(this.models.workspaces);
+    const mainLayout = createMainLayout(
+      this.models.workspaces,
+      this.actions,
+      this.activeWorkspace,
+    );
     this.root.appendChild(mainLayout);
   }
 }
