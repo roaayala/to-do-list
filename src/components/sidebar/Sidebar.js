@@ -1,7 +1,5 @@
 import createSidebarHeader from "./SidebarHeader.js";
 import createSidebarNav from "./SidebarNav.js";
-import sidebarAction from "./SidebarAction.js";
-import createButton from "../commons/Button.js";
 import createSidebarAction from "./SidebarAction.js";
 
 export default function createSidebar({
