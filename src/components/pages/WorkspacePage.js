@@ -1,4 +1,5 @@
 import createEmptyMessage from "../commons/EmptyMessage";
+import createPageHeader from "./PageHeader";
 
 export default function createWorkspacePage({
   workspace,
@@ -14,9 +15,8 @@ export default function createWorkspacePage({
     return workspacePage;
   }
 
-  workspacePage.textContent = activeWorkspace;
-
-  //
+  const workspaceHeader = createPageHeader({ workspace });
+  workspacePage.appendChild(workspaceHeader);
 
   return workspacePage;
 }
