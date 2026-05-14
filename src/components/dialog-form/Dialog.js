@@ -9,6 +9,7 @@ export default function showDialog({
   },
   formConfig = {
     id,
+    elementPlaceholder,
   },
   onAdd,
   onEdit,
@@ -39,6 +40,7 @@ export default function showDialog({
     initialData,
     formConfig: {
       id: formConfig.id,
+      elementPlaceholder: formConfig.elementPlaceholder,
     },
     onSubmit: (data) => {
       if (initialData) {

@@ -15,7 +15,7 @@ export default function createSidebarAction({ actions }) {
           title: "Workspace",
           initialData: null,
         },
-        formConfig: { id: "form" },
+        formConfig: { id: "form", elementPlaceholder: "Workspace" },
         onAdd: actions.handleAddWorkspace,
         onEdit: actions.handleRemoveWorkspace,
       });

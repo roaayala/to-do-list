@@ -4,7 +4,10 @@ import createTextarea from "../commons/Textarea.js";
 
 export default function createDialogForm({
   initialData,
-  formConfig = { id },
+  formConfig = {
+    id,
+    elementPlaceholder,
+  },
   onSubmit,
 }) {
   const form = document.createElement("form");
@@ -14,7 +17,7 @@ export default function createDialogForm({
   const textInput = createTextInput({
     label: "Name",
     id: "name",
-    placeholder: "Workspace Name",
+    placeholder: `${formConfig.elementPlaceholder} Name`,
     value: initialData ? initialData.name : "",
   });
   form.appendChild(textInput);
@@ -22,7 +25,7 @@ export default function createDialogForm({
   const textarea = createTextarea({
     label: "Description",
     id: "description",
-    placeholder: "Workspace Description",
+    placeholder: `${formConfig.elementPlaceholder} Description`,
     value: initialData ? initialData.desription : "",
   });
 

@@ -43,7 +43,7 @@ export default function createSidebarNav({
             dialogConfig: {
               title: "Workspace",
             },
-            formConfig: { id: "form" },
+            formConfig: { id: "form", elementPlaceholder: "Workspace" },
             onAdd: actions.handleAddWorkspace,
             onEdit: actions.handleEditWorkspace,
           });
