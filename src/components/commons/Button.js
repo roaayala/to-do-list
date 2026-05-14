@@ -1,29 +1,27 @@
 export default function createButton({
-	id,
-	style,
-	type = "button",
-	text,
-	callback,
+  id = null,
+  style = "btn",
+  type = "button",
+  text = "",
+  callback,
 }) {
-	const button = document.createElement("button");
+  const button = document.createElement("button");
 
-	if (id) button.id = id;
+  if (id) button.id = id;
+  button.className = style;
+  button.type = type;
 
-	if (style) button.className = style;
+  if (text) button.textContent = text;
 
-	button.type = type;
+  button.addEventListener("click", (e) => {
+    if (type !== "submit") {
+      e.preventDefault();
+    }
 
-	button.textContent = text;
+    if (callback) {
+      callback(e);
+    }
+  });
 
-	button.addEventListener("click", (e) => {
-		if (type !== "submit") {
-			e.preventDefault();
-		}
-
-		if (callback) {
-			callback(e);
-		}
-	});
-
-	return button;
+  return button;
 }

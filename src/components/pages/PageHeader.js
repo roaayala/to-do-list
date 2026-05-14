@@ -1,34 +1,19 @@
-export default function createPageHeader({
-	name,
-	description,
-	dueDate,
-	priority,
-}) {
-	const header = document.createElement("header");
-	header.className = "page-header";
+export default function createPageHeader({ workspace }) {
+  const pageHeader = document.createElement("header");
+  pageHeader.className = "page-header";
 
-	const headerName = document.createElement("h2");
-	headerName.textContent = name;
+  const title = document.createElement("h2");
+  title.className = "page-header__title";
+  title.textContent = workspace.name;
+  pageHeader.appendChild(title);
 
-	const headerDescription = document.createElement("p");
-	headerDescription.textContent = description
-		? description
-		: "No description being added";
+  const description = document.createElement("p");
+  description.className = "page-header__description";
 
-	header.appendChild(headerName);
-	header.appendChild(headerDescription);
+  description.textContent = workspace.description
+    ? workspace.description
+    : "No description";
+  pageHeader.appendChild(description);
 
-	if (dueDate) {
-		const headerDueDate = document.createElement("span");
-		headerDueDate.textContent = dueDate;
-		header.appendChild(headerDueDate);
-	}
-
-	if (priority) {
-		const headerPriority = document.createElement("span");
-		headerPriority.textContent = priority;
-		header.appendChild(headerPriority);
-	}
-
-	return header;
+  return pageHeader;
 }

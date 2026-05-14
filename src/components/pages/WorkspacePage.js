@@ -1,54 +1,39 @@
-import createPageHeader from "./PageHeader.js";
-import createPageContent from "./PageContent.js";
-import createPageAction from "./PageAction.js";
+import createEmptyMessage from "../commons/EmptyMessage";
+import createPageHeader from "./PageHeader";
+import createPageContent from "./PageContent";
+import createPageActions from "./PageActions";
 
-import createEmptyMessage from "../commons/EmptyMessage.js";
+export default function createWorkspacePage({
+  workspace,
+  actions,
+  activeWorkspace,
+}) {
+  const workspacePage = document.createElement("main");
+  workspacePage.className = "page-wrapper";
 
-export default function createWorkspacePage({ workspace, actions }) {
-	const pageWrapper = document.createElement("div");
-	pageWrapper.className = "page-wrapper";
+  if (!activeWorkspace) {
+    const emptyMessage = createEmptyMessage("No workspace being active!");
+    workspacePage.appendChild(emptyMessage);
+    return workspacePage;
+  }
 
-	if (!workspace) {
-		const emptyMessage = createEmptyMessage("No workspace being selected!");
-		pageWrapper.appendChild(emptyMessage);
+  const workspaceHeader = createPageHeader({ workspace });
+  workspacePage.appendChild(workspaceHeader);
 
-		return pageWrapper;
-	}
+  const workspaceContent = createPageContent({
+    projects: workspace.projects,
+    actions,
+    emptyMessageText: "Project is empty!",
+  });
+  workspacePage.appendChild(workspaceContent);
 
-	const workspaceHeader = createPageHeader({
-		name: workspace.name,
-		description: workspace.description,
-	});
+  const workspaceActions = createPageActions({
+    buttonConfig: { text: "Add Project" },
+    dialogConfig: { title: "Project" },
+    formConfig: { id: "form", elementPlaceholder: "Project" },
+    onAdd: actions.handleAddProject,
+  });
+  workspacePage.appendChild(workspaceActions);
 
-	const projects = workspace.projects.items;
-
-	const workspaceContent = createPageContent({
-		items: projects,
-		actions: actions,
-		emptyMessageText: "No project being added!",
-		setActiveItem: actions.setActiveProject,
-		dialogConfig: {
-			title: "Project",
-			formId: "projectDialogForm",
-			onSaveItem: actions.saveProject,
-			onEditItem: actions.editProject,
-		},
-		onDelete: actions.deleteProject,
-	});
-
-	const workspaceAction = createPageAction({
-		buttonElement: { text: "New Project" },
-		itemDialogElement: {
-			title: "Project Details",
-			formId: "projectDialogForm",
-			initialData: null,
-			onSave: actions.saveProject,
-			onEdit: actions.editProject,
-		},
-	});
-
-	pageWrapper.appendChild(workspaceHeader);
-	pageWrapper.appendChild(workspaceContent);
-	pageWrapper.appendChild(workspaceAction);
-	return pageWrapper;
+  return workspacePage;
 }
