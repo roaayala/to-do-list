@@ -23,6 +23,8 @@ export default class AppController {
         this.activeProject = null;
         this.activeTask = null;
         this.activeTodo = null;
+
+        this.render();
       },
 
       // WORKSPACE HANDLER

@@ -15,7 +15,7 @@ export default function createSidebar({
   sidebar.appendChild(sidebarHeader);
 
   // content
-  const sidebarNav = createSidebarNav({ workspaces, activeWorkspace });
+  const sidebarNav = createSidebarNav({ actions, workspaces, activeWorkspace });
   sidebar.appendChild(sidebarNav);
 
   // actions
