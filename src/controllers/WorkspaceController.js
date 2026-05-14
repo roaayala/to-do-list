@@ -21,7 +21,11 @@ export default class WorkspaceController {
     return newWorkspace;
   }
 
-  removeWorkspace(id) {}
+  removeWorkspace(id) {
+    this.workspaces = this.workspaces.filter(
+      (workspace) => workspace.id !== id,
+    );
+  }
 
   editWorkspace(editedWorkspace) {}
 }

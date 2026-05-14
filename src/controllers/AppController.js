@@ -40,7 +40,17 @@ export default class AppController {
         this.render();
       },
       handleRemoveWorkspace: (id) => {
-        console.log(id);
+        this.workspaceController.removeWorkspace(id);
+        this.models.workspaces = this.workspaceController.workspaces;
+
+        if (this.activeWorkspace === id) {
+          this.activeWorkspace = null;
+          this.activeProject = null;
+          this.activeTask = null;
+          this.activeTodo = null;
+        }
+
+        this.render();
       },
       handleEditWorkspace: (editedWorkspace) => {
         console.log(editedWorkspace);

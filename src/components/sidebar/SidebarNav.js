@@ -32,8 +32,14 @@ export default function createSidebarNav({
     if (activeWorkspace === workspace.id) {
       const navItemActions = document.createElement("div");
       navItemActions.className = "sidebar__nav-item-actions";
+
       const editButton = createButton({ text: "Edit" });
-      const deleteButton = createButton({ text: "Delete" });
+      const deleteButton = createButton({
+        text: "Delete",
+        callback: () => {
+          actions.handleRemoveWorkspace(workspace.id);
+        },
+      });
 
       navItemActions.appendChild(editButton);
       navItemActions.appendChild(deleteButton);
