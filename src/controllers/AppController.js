@@ -27,7 +27,15 @@ export default class AppController {
 
       // WORKSPACE HANDLER
       handleAddWorkspace: (data) => {
-        console.log(data);
+        const newWorkspace = this.workspaceController.addWorkspace(
+          data.name,
+          data.description,
+        );
+
+        this.models.workspaces = this.workspaceController.workspaces;
+        this.actions.setActiveWorkspace(newWorkspace.id);
+
+        this.render();
       },
       handleRemoveWorkspace: (id) => {
         console.log(id);
