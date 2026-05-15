@@ -8,16 +8,16 @@ export default function createMainLayout(workspaces, actions, activeWorkspace) {
   const sidebar = createSidebar({ workspaces, actions, activeWorkspace });
   container.appendChild(sidebar);
 
-  const workspace = workspaces.find(
-    (workspace) => workspace.id === activeWorkspace,
-  );
+  // const workspace = workspaces.find(
+  //   (workspace) => workspace.id === activeWorkspace,
+  // );
 
-  const workspacePage = createWorkspacePage({
-    workspace,
-    actions,
-    activeWorkspace,
-  });
-  container.appendChild(workspacePage);
+  // const workspacePage = createWorkspacePage({
+  //   workspace,
+  //   actions,
+  //   activeWorkspace,
+  // });
+  // container.appendChild(workspacePage);
 
   return container;
 }

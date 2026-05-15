@@ -8,7 +8,26 @@ export default function showDialog({
   },
   formConfig = {
     id,
-    elementPlaceholder,
+    textInputConfig: {
+      label,
+      id,
+      placeholder,
+    },
+    textareaConfig: {
+      label,
+      id,
+      placeholder,
+    },
+    dateInputConfig: {
+      isActive,
+      label,
+      id,
+    },
+    selectConfig: {
+      isActive,
+      label,
+      id,
+    },
   },
   onAdd,
   onEdit,
@@ -39,7 +58,26 @@ export default function showDialog({
     initialData,
     formConfig: {
       id: formConfig.id,
-      elementPlaceholder: formConfig.elementPlaceholder,
+      textInputConfig: {
+        label: formConfig.textInputConfig.label,
+        id: formConfig.textInputConfig.id,
+        placeholder: formConfig.textInputConfig.placeholder,
+      },
+      textareaConfig: {
+        label: formConfig.textareaConfig.label,
+        id: formConfig.textareaConfig.id,
+        placeholder: formConfig.textareaConfig.placeholder,
+      },
+      dateInputConfig: {
+        isActive: formConfig.dateInputConfig.isActive,
+        label: formConfig.dateInputConfig.label,
+        id: formConfig.dateInputConfig.id,
+      },
+      selectConfig: {
+        isActive: formConfig.selectConfig.isActive,
+        label: formConfig.selectConfig.label,
+        id: formConfig.selectConfig.id,
+      },
     },
     onSubmit: (data) => {
       if (initialData) {
@@ -47,7 +85,6 @@ export default function showDialog({
       } else {
         onAdd(data);
       }
-
       closeDialog();
     },
   });
