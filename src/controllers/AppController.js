@@ -31,9 +31,10 @@ export default class AppController {
       // DIALOG
       showAddWorkspaceDialog: () => {
         showDialog({
+          initialData: null,
           dialogConfig: { title: "Add Workspace Details" },
           formConfig: {
-            id: "add-workspace",
+            id: "addWorkspace",
             textInputConfig: {
               label: "Workspace Name",
               id: "workspaceName",
@@ -50,6 +51,30 @@ export default class AppController {
             selectConfig: { isActive: false },
           },
           onAdd: (data) => this.actions.handleAddWorkspace(data),
+        });
+      },
+      showEditWorkspaceDialog: (wsId) => {
+        showDialog({
+          initialData: this.models.workspaces.find(
+            (workspace) => workspace.id === wsId,
+          ),
+          dialogConfig: { title: "Edit Workspace Details" },
+          formConfig: {
+            id: "editWorkspace",
+            textInputConfig: {
+              label: "Workspace Name",
+              id: "workspaceName",
+              placeholder: "Enter workspace name!",
+            },
+            textareaConfig: {
+              label: "Workspace Description",
+              id: "workspaceDescription",
+              placeholder: "Enter workspace description!",
+            },
+            dateInputConfig: { isActive: false },
+            selectConfig: { isActive: false },
+          },
+          onEdit: (data) => this.actions.handleEditWorkspace(data),
         });
       },
 

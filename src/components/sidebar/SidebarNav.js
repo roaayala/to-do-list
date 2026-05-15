@@ -1,6 +1,5 @@
 import createButton from "../commons/Button.js";
 import createEmptyMessage from "../commons/EmptyMessage.js";
-import showDialog from "../dialog-form/Dialog.js";
 
 export default function createSidebarNav({
   actions,
@@ -38,15 +37,7 @@ export default function createSidebarNav({
         text: "Edit",
         initialData: workspace,
         callback: () => {
-          showDialog({
-            initialData: workspace,
-            dialogConfig: {
-              title: "Workspace",
-            },
-            formConfig: { id: "form", elementPlaceholder: "Workspace" },
-            onAdd: actions.handleAddWorkspace,
-            onEdit: actions.handleEditWorkspace,
-          });
+          actions.showEditWorkspaceDialog(workspace.id);
         },
       });
       const deleteButton = createButton({

@@ -46,9 +46,7 @@ export default function showDialog({
 
   const headerTitle = document.createElement("h2");
   headerTitle.className = "dialog__header-title";
-  headerTitle.textContent = initialData
-    ? `Edit ${dialogConfig.title} Details`
-    : `Save ${dialogConfig.title} Details`;
+  headerTitle.textContent = dialogConfig.title;
 
   header.appendChild(headerTitle);
   dialog.appendChild(header);
