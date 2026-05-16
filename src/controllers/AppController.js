@@ -31,7 +31,11 @@ export default class AppController {
 
         this.render();
       },
-
+      // GET ACTIVE STATE
+      getActiveWorkspace: () => this.activeWorkspace,
+      getActiveProject: () => this.activeProject,
+      getActiveTask: () => this.activeTask,
+      getActiveTodo: () => this.activeTodo,
       // DIALOG
       showAddWorkspaceDialog: () => {
         showDialog({
@@ -126,6 +130,13 @@ export default class AppController {
         this.render();
       },
       handleRemoveWorkspace: (id) => {
+        // remove all todo
+        // remove all task
+        // remove all project
+        this.projectController.removeProjectsByParentId(id);
+        this.models.projects = this.projectController.projects;
+
+        // removeWorkspace
         this.workspaceController.removeWorkspace(id);
         this.models.workspaces = this.workspaceController.workspaces;
 
@@ -135,6 +146,8 @@ export default class AppController {
           this.activeTask = null;
           this.activeTodo = null;
         }
+
+        console.log(this.models);
 
         this.render();
       },
@@ -146,8 +159,7 @@ export default class AppController {
       },
 
       handleAddProject: (data) => {
-        console.log(data);
-        const newProject = this.projectController.addProject(
+        this.projectController.addProject(
           this.activeWorkspace,
           data.name,
           data.description,
@@ -156,7 +168,6 @@ export default class AppController {
         );
 
         this.models.projects = this.projectController.projects;
-        console.log(this.models);
       },
     };
 

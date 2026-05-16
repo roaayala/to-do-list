@@ -3,16 +3,11 @@ import createPageHeader from "./PageHeader";
 import createPageContent from "./PageContent";
 import createPageActions from "./PageActions";
 
-export default function createWorkspacePage({
-  workspace,
-  projects,
-  actions,
-  activeWorkspace,
-}) {
+export default function createWorkspacePage({ workspace, projects, actions }) {
   const workspacePage = document.createElement("main");
   workspacePage.className = "page-wrapper";
 
-  if (!activeWorkspace) {
+  if (!actions.getActiveWorkspace()) {
     const emptyMessage = createEmptyMessage("No workspace being active!");
     workspacePage.appendChild(emptyMessage);
     return workspacePage;

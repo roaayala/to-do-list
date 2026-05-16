@@ -1,11 +1,7 @@
 import createButton from "../commons/Button.js";
 import createEmptyMessage from "../commons/EmptyMessage.js";
 
-export default function createSidebarNav({
-  actions,
-  workspaces,
-  activeWorkspace,
-}) {
+export default function createSidebarNav({ actions, workspaces }) {
   const sidebarNav = document.createElement("nav");
   sidebarNav.className = "sidebar__nav";
 
@@ -29,7 +25,7 @@ export default function createSidebarNav({
       actions.setActiveWorkspace(workspace.id);
     });
 
-    if (activeWorkspace === workspace.id) {
+    if (actions.getActiveWorkspace() === workspace.id) {
       const navItemActions = document.createElement("div");
       navItemActions.className = "sidebar__nav-item-actions";
 

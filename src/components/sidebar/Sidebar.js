@@ -2,11 +2,7 @@ import createSidebarHeader from "./SidebarHeader.js";
 import createSidebarNav from "./SidebarNav.js";
 import createSidebarAction from "./SidebarAction.js";
 
-export default function createSidebar({
-  workspaces,
-  actions,
-  activeWorkspace,
-}) {
+export default function createSidebar({ workspaces, actions }) {
   const sidebar = document.createElement("aside");
   sidebar.className = "sidebar";
 
@@ -15,7 +11,7 @@ export default function createSidebar({
   sidebar.appendChild(sidebarHeader);
 
   // content
-  const sidebarNav = createSidebarNav({ actions, workspaces, activeWorkspace });
+  const sidebarNav = createSidebarNav({ actions, workspaces });
   sidebar.appendChild(sidebarNav);
 
   // actions
