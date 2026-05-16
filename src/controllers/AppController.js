@@ -179,8 +179,6 @@ export default class AppController {
           this.activeTodo = null;
         }
 
-        console.log(this.models);
-
         this.render();
       },
       handleEditWorkspace: (id, editedWs) => {
@@ -201,6 +199,14 @@ export default class AppController {
 
         this.models.projects = this.projectController.projects;
 
+        this.render();
+      },
+      handleRemoveProject: (pId) => {
+        // remove all todo
+        // remove all task
+        // remove project
+        this.projectController.removeProject(pId);
+        this.models.projects = this.projectController.projects;
         this.render();
       },
       handleEditProject: (pId, data) => {

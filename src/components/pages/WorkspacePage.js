@@ -53,6 +53,7 @@ export default function createWorkspacePage({ workspace, projects, actions }) {
         actions.handleRemoveProject(project.id);
       },
     });
+    projectItemActions.appendChild(deleteButton);
     projectItem.appendChild(projectItemActions);
 
     workspaceContent.appendChild(projectItem);
