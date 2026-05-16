@@ -168,6 +168,8 @@ export default class AppController {
         );
 
         this.models.projects = this.projectController.projects;
+
+        this.render();
       },
     };
 

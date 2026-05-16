@@ -17,7 +17,7 @@ export default function createWorkspacePage({ workspace, projects, actions }) {
   workspacePage.appendChild(workspaceHeader);
 
   const workspaceContent = createPageContent({
-    projects,
+    items: projects,
     actions,
     emptyMessageText: "Project is empty!",
   });
