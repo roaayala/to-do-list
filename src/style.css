@@ -3,3 +3,11 @@
 @import url("./styles/container.css");
 @import url("./styles/sidebar.css");
 @import url("./styles/main-panel.css");
+
+.empty-message {
+    text-align: center;
+    padding: var(--spacing-4) var(--spacing-8);
+    font-weight: 700;
+    display: block;
+    box-shadow: var(--box-shadow);
+}
