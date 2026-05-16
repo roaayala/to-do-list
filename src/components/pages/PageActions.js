@@ -1,5 +1,4 @@
 import createButton from "../commons/Button";
-import showDialog from "../dialog-form/Dialog";
 
 export default function createPageActions({
   actions,

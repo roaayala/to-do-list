@@ -1,7 +1,7 @@
 import Todo from "../models/Todo";
 import generateId from "../utils/generateId";
 
-export default class TaskController {
+export default class TodoContoller {
   constructor(todos) {
     this.todos = todos;
   }

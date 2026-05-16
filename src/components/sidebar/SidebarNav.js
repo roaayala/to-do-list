@@ -13,7 +13,10 @@ export default function createSidebarNav({ actions, workspaces }) {
 
   workspaces.forEach((workspace) => {
     const navItem = document.createElement("div");
-    navItem.className = "sidebar__nav-item";
+    navItem.className =
+      actions.getActiveWorkspace() === workspace.id
+        ? "sidebar__nav-item sidebar__nav-item--active"
+        : "sidebar__nav-item";
     navItem.id = workspace.id;
 
     const navItemTitle = document.createElement("span");

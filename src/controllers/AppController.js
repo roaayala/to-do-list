@@ -2,6 +2,8 @@ import WorkspaceController from "./WorkspaceController.js";
 import createMainLayout from "../components/MainLayout.js";
 import showDialog from "../components/dialog-form/Dialog.js";
 import ProjectController from "./ProjectController.js";
+import TaskController from "./TaskController.js";
+import TodoContoller from "./TodoController.js";
 
 export default class AppController {
   constructor(root) {
@@ -16,6 +18,8 @@ export default class AppController {
     // CONTROLLERS
     this.workspaceController = new WorkspaceController(this.models.workspaces);
     this.projectController = new ProjectController(this.models.projects);
+    this.taskController = new TaskController(this.models.tasks);
+    this.todoContoller = new TodoContoller(this.models.tasks);
 
     // ACTIVE STATE
     this.activeWorkspace = null;
@@ -164,8 +168,16 @@ export default class AppController {
         this.render();
       },
       handleRemoveWorkspace: (id) => {
+        // const findProjects = this.models.projects.filter(
+        //   (project) => project.wsId === id,
+        // );
+        // const findTasks = this.models.tasks.filter();
         // remove all todo
+        //  this.models.todos = this.todoContoller.todos;
+
         // remove all task
+        // this.models.tasks = this.taskController.tasks;
+
         // remove all project
         this.projectController.removeProjectsByParentId(id);
         this.models.projects = this.projectController.projects;
