@@ -10,8 +10,6 @@ Sebuah aplikasi manajemen proyek (*Project Management*) yang dibangun 100% mengg
 
 ## ✨ Fitur Utama
 
-## ✨ Fitur Utama
-
 - **Hierarki Data 3-Level:** Organisasi tugas yang terstruktur rapi mulai dari `Project` > `Task` > `Todo`.
 - **Manajemen Waktu Presisi:** Menggunakan `date-fns` untuk memformat, memvalidasi, dan mengelola tenggat waktu (*deadline*) tugas secara akurat tanpa membebani performa aplikasi.
 - **Flat State / Relational Data:** Menggunakan arsitektur penyimpanan data yang sejajar (mirip *Relational Database*) untuk mencegah *nested data hell* dan mempermudah manipulasi data skala besar.
@@ -60,6 +58,6 @@ Proyek ini adalah titik balik pemahaman fundamental JavaScript saya:
 
 1. _Clone_ repositori ini ke komputer lokalmu:
    ```bash
-   git clone [https://github.com/roaayala/mini-project-management.git](https://github.com/roaayala/mini-project-management.git)
+   git clone https://github.com/roaayala/mini-project-management.git
 2. cd mini-project-management
 3. npx serve src
