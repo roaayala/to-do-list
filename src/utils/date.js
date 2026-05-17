@@ -1,11 +1,10 @@
-import { format } from "date-fns";
+import { format, parseISO } from "date-fns";
 
-function isoDateToString(date) {
-	return format(date, "yyyy-MM-dd");
+function beautifyDateString(dateString) {
+  return format(parseISO(dateString), "dd MMMM yyyy");
+}
+function todayDateString() {
+  return format(new Date(), "yyyy-MM-dd");
 }
 
-function beautifyIsoString(date) {
-	return format(date, "dd MMMM yyyy");
-}
-
-export { isoDateToString, beautifyIsoString };
+export { beautifyDateString, todayDateString };

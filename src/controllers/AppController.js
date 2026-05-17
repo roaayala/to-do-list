@@ -59,14 +59,10 @@ export default class AppController {
               placeholder: "Enter project description!",
             },
             dateInputConfig: {
-              isActive: true,
-              label: "Project Deadline",
-              id: "projectDeadline",
+              isActive: false,
             },
             selectConfig: {
-              isActive: true,
-              label: "Project Priority",
-              id: "projectPriority",
+              isActive: false,
             },
           },
           onAdd: (data) => this.actions.handleAddProject(data),
@@ -91,14 +87,10 @@ export default class AppController {
               placeholder: "Enter project description!",
             },
             dateInputConfig: {
-              isActive: true,
-              label: "Project Deadline",
-              id: "projectDeadline",
+              isActive: false,
             },
             selectConfig: {
-              isActive: true,
-              label: "Project Priority",
-              id: "projectPriority",
+              isActive: false,
             },
           },
           onEdit: (data) => this.actions.handleEditProject(pId, data),
@@ -110,12 +102,11 @@ export default class AppController {
         const newProject = this.projectController.addProject(
           data.name,
           data.description,
-          data.dueDate,
-          data.priority,
         );
 
         this.models.projects = this.projectController.projects;
         this.actions.setActiveProject(newProject.id);
+        console.log(newProject);
 
         this.render();
       },

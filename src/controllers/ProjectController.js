@@ -1,19 +1,19 @@
 import Project from "../models/Project";
 import generateId from "../utils/generateId";
+import { todayDateString } from "../utils/date";
 
 export default class ProjectController {
   constructor(projects) {
     this.projects = projects;
   }
 
-  addProject(name, description, dueDate, priority) {
-    const newProject = new Project(
-      generateId("project"),
+  addProject(name, description) {
+    const newProject = new Project({
+      id: generateId("project"),
+      createdAt: todayDateString(),
       name,
       description,
-      dueDate,
-      priority,
-    );
+    });
 
     this.projects = [...this.projects, newProject];
 
