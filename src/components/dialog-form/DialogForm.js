@@ -55,7 +55,7 @@ export default function createDialogForm({
     const dateInput = createDateInput({
       label: formConfig.dateInputConfig.label,
       id: formConfig.dateInputConfig.id,
-      value: initialData ? initialData.dueDate : "",
+      value: initialData ? initialData.deadline : "",
     });
     form.appendChild(dateInput);
   }
@@ -77,7 +77,7 @@ export default function createDialogForm({
       description: getInputValue(form, formConfig.textareaConfig.id),
     };
     if (formConfig.dateInputConfig.isActive) {
-      data.dueDate = getInputValue(form, formConfig.dateInputConfig.id);
+      data.deadline = getInputValue(form, formConfig.dateInputConfig.id);
     }
     if (formConfig.selectConfig.isActive) {
       data.priority = getInputValue(form, formConfig.selectConfig.id);

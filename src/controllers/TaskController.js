@@ -7,8 +7,21 @@ export default class TaskController {
     this.tasks = tasks;
   }
 
-  addTask() {}
-  removeTasksByParentId(pId) {}
+  addTask(pId, name, description, deadline, priority) {
+    const newTask = new Task({
+      id: generateId("task"),
+      pId,
+      createdAt: todayDateString(),
+      name,
+      description,
+      deadline,
+      priority,
+    });
+
+    this.tasks = [...this.tasks, newTask];
+
+    return newTask;
+  }
   removeTask(tsId) {}
   editTask(tsId) {}
 }

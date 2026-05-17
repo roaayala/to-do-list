@@ -116,8 +116,8 @@ export default class AppController {
             },
             dateInputConfig: {
               isActive: true,
-              Label: "Task Due Date",
-              id: "taskDueDate",
+              label: "Task Deadline",
+              id: "taskDeadline",
             },
             selectConfig: {
               isActive: true,
