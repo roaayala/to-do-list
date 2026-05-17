@@ -98,6 +98,39 @@ export default class AppController {
           onEdit: (data) => this.actions.handleEditProject(pId, data),
         });
       },
+      showAddTaskDialog: () => {
+        showDialog({
+          initialData: null,
+          dialogConfig: { title: "Add Taks Details" },
+          formConfig: {
+            id: "addTask",
+            textInputConfig: {
+              label: "Task Name",
+              id: "taskName",
+              placeholder: "Enter task name!",
+            },
+            textareaConfig: {
+              label: "Task Description",
+              id: "taskDescription",
+              placeholder: "Enter task description!",
+            },
+            dateInputConfig: {
+              isActive: true,
+              Label: "Task Due Date",
+              id: "taskDueDate",
+            },
+            selectConfig: {
+              isActive: true,
+              label: "Task Priority",
+              id: "taskPriority",
+            },
+          },
+          onAdd: (data) => this.actions.handleAddTask(data),
+        });
+      },
+      showEditTaskDialog: () => {},
+      showAddTodoDialog: () => {},
+      showEditTodoDialog: () => {},
 
       // PROJECT HANDLER
       handleAddProject: (data) => {
@@ -130,6 +163,14 @@ export default class AppController {
         this.models.projects = this.projectController.projects;
         this.render();
       },
+      handleAddTask: (data) => {
+        console.log(data);
+      },
+      handleRemoveTask: () => {},
+      handleEditTask: () => {},
+      handleAddTodo: () => {},
+      handleRemoveTodo: () => {},
+      handleEditTodo: () => {},
     };
 
     this.render();

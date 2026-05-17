@@ -64,7 +64,7 @@ export default function createProjectPage({ project, tasks, actions }) {
     buttonConfig: {
       text: "New Task",
       callback: () => {
-        console.log("click");
+        actions.showAddTaskDialog();
       },
     },
   });
