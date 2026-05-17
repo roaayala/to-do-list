@@ -23,44 +23,48 @@ export default function createProjectPage({ project, tasks, actions }) {
   const pageContent = document.createElement("main");
   pageContent.className = "page-content";
 
-  projectTasks.forEach((task) => {
-    // item container
-    const item = document.createElement("div");
-    item.className = "page-content__item";
+  if (projectTasks.length === 0) {
+    const emptyTasks = createEmptyMessage("No task being added!");
+    pageContent.appendChild(emptyTasks);
+  } else {
+    projectTasks.forEach((task) => {
+      // item container
+      const item = document.createElement("div");
+      item.className = "page-content__item";
 
-    // item title
-    const title = document.createElement("h3");
-    title.className = "page-content__item-title";
-    title.textContent = task.name;
-    item.appendChild(title);
+      // item title
+      const title = document.createElement("h3");
+      title.className = "page-content__item-title";
+      title.textContent = task.name;
+      item.appendChild(title);
 
-    // actions container
-    const actionsContainer = document.createElement("div");
-    actionsContainer.className = "page-content__item-actions";
+      // actions container
+      const actionsContainer = document.createElement("div");
+      actionsContainer.className = "page-content__item-actions";
 
-    // edit Button
-    const editButton = createButton({
-      text: "Edit",
-      callback: () => {
-        actions.handleEditTask(task.id);
-      },
+      // edit Button
+      const editButton = createButton({
+        text: "Edit",
+        callback: () => {
+          actions.handleEditTask(task.id);
+        },
+      });
+      actionsContainer.appendChild(editButton);
+
+      // delete button
+      const deleteButton = createButton({
+        text: "Delete",
+        callback: () => {
+          actions.handleRemoveTask(task.id);
+        },
+      });
+      actionsContainer.appendChild(deleteButton);
+
+      item.appendChild(actionsContainer);
+
+      pageContent.appendChild(item);
     });
-    actionsContainer.appendChild(editButton);
-
-    // delete button
-    const deleteButton = createButton({
-      text: "Delete",
-      callback: () => {
-        actions.handleRemoveTask(task.id);
-      },
-    });
-    actionsContainer.appendChild(deleteButton);
-
-    item.appendChild(actionsContainer);
-
-    pageContent.appendChild(item);
-  });
-
+  }
   projectPage.appendChild(pageContent);
 
   // ACTION
