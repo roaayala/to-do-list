@@ -19,6 +19,7 @@ export default function createProjectPage({ project, tasks, actions }) {
   projectPage.appendChild(pageHeader);
 
   // CONTENT
+
   const projectTasks = tasks.filter((task) => task.pId === project.id);
   const pageContent = document.createElement("main");
   pageContent.className = "page-content";
@@ -46,7 +47,7 @@ export default function createProjectPage({ project, tasks, actions }) {
       const editButton = createButton({
         text: "Edit",
         callback: () => {
-          actions.handleEditTask(task.id);
+          actions.showEditTaskDialog(task.id);
         },
       });
       actionsContainer.appendChild(editButton);

@@ -173,11 +173,21 @@ export default class AppController {
         );
 
         this.models.tasks = this.taskController.tasks;
-        console.log(this.models.tasks);
-
         this.render();
       },
-      handleRemoveTask: () => {},
+      handleRemoveTask: (tsId) => {
+        // remove all todo
+        // remove task
+        this.taskController.removeTask(tsId);
+
+        this.models.tasks = this.taskController.tasks;
+
+        if (this.actions.getActiveTask() === tsId) {
+          this.activeTask = null;
+          this.activeTodo = null;
+        }
+        this.render();
+      },
       handleEditTask: () => {},
       handleAddTodo: () => {},
       handleRemoveTodo: () => {},

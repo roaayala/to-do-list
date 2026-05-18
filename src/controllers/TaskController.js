@@ -22,6 +22,8 @@ export default class TaskController {
 
     return newTask;
   }
-  removeTask(tsId) {}
+  removeTask(tsId) {
+    this.tasks = this.tasks.filter((task) => task.id !== tsId);
+  }
   editTask(tsId) {}
 }
