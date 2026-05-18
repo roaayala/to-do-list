@@ -37,7 +37,11 @@ export default class AppController {
 
         this.render();
       },
-
+      setActiveTask: (tsId) => {
+        this.activeTask = tsId;
+        this.activeTodo = null;
+        this.render();
+      },
       // GET ACTIVE STATE
       getActiveProject: () => this.activeProject,
       getActiveTask: () => this.activeTask,

@@ -39,6 +39,10 @@ export default function createProjectPage({ project, tasks, actions }) {
       title.textContent = task.name;
       item.appendChild(title);
 
+      title.addEventListener("click", () => {
+        actions.setActiveTask(task.id);
+      });
+
       // actions container
       const actionsContainer = document.createElement("div");
       actionsContainer.className = "page-content__item-actions";
