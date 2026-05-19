@@ -132,7 +132,36 @@ export default class AppController {
           onAdd: (data) => this.actions.handleAddTask(pId, data),
         });
       },
-      showEditTaskDialog: () => {},
+      showEditTaskDialog: (tsId) => {
+        showDialog({
+          initialData: this.models.tasks.find((task) => task.id === tsId),
+          dialogConfig: { title: "Edit Task Details" },
+          formConfig: {
+            id: "editTask",
+            textInputConfig: {
+              label: "Task Name",
+              id: "taskName",
+              placeholder: "Enter task name!",
+            },
+            textareaConfig: {
+              label: "Task Description",
+              id: "taskDescription",
+              placeholder: "Enter task description!",
+            },
+            dateInputConfig: {
+              isActive: true,
+              label: "Task Deadline",
+              id: "taskDeadline",
+            },
+            selectConfig: {
+              isActive: true,
+              label: "Task Priority",
+              id: "taskPriority",
+            },
+          },
+          onEdit: (data) => this.actions.handleEditTask(tsId, data),
+        });
+      },
       showAddTodoDialog: () => {},
       showEditTodoDialog: () => {},
 
@@ -167,6 +196,7 @@ export default class AppController {
         this.models.projects = this.projectController.projects;
         this.render();
       },
+
       handleAddTask: (pId, data) => {
         this.taskController.addTask(
           pId,
@@ -192,7 +222,12 @@ export default class AppController {
         }
         this.render();
       },
-      handleEditTask: () => {},
+      handleEditTask: (tsId, data) => {
+        this.taskController.editTask(tsId, data);
+        this.models.tasks = this.taskController.tasks;
+
+        this.render();
+      },
       handleAddTodo: () => {},
       handleRemoveTodo: () => {},
       handleEditTodo: () => {},
