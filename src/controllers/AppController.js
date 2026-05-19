@@ -162,7 +162,36 @@ export default class AppController {
           onEdit: (data) => this.actions.handleEditTask(tsId, data),
         });
       },
-      showAddTodoDialog: () => {},
+      showAddTodoDialog: (tsId) => {
+        showDialog({
+          initialData: null,
+          dialogConfig: { title: "Add Todo Details" },
+          formConfig: {
+            id: "addTodo",
+            textInputConfig: {
+              label: "Todo Name",
+              id: "todoName",
+              placeholder: "Enter todo name!",
+            },
+            textareaConfig: {
+              label: "Todo Description",
+              id: "todoDescription",
+              placeholder: "Enter todo description!",
+            },
+            dateInputConfig: {
+              isActive: true,
+              label: "Todo Deadline",
+              id: "todoDeadline",
+            },
+            selectConfig: {
+              isActive: true,
+              label: "Todo Priority",
+              id: "todoPriority",
+            },
+          },
+          onAdd: (data) => this.actions.handleAddTodo(tsId, data),
+        });
+      },
       showEditTodoDialog: () => {},
 
       // PROJECT HANDLER
@@ -228,7 +257,19 @@ export default class AppController {
 
         this.render();
       },
-      handleAddTodo: () => {},
+      handleAddTodo: (tsId, data) => {
+        this.todoContoller.addTodo(
+          tsId,
+          data.name,
+          data.description,
+          data.deadline,
+          data.priority,
+        );
+
+        this.models.todos = this.todoContoller.todos;
+
+        this.render();
+      },
       handleRemoveTodo: () => {},
       handleEditTodo: () => {},
     };

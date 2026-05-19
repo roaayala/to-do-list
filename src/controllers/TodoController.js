@@ -7,7 +7,23 @@ export default class TodoContoller {
     this.todos = todos;
   }
 
-  addTodo() {}
+  addTodo(tsId, name, description, deadline, priority) {
+    const newTodo = new Todo({
+      id: generateId("todo"),
+      tsId,
+      createdAt: todayDateString(),
+      name,
+      description,
+      deadline,
+      priority,
+      isDone: false,
+    });
+
+    this.todos = [...this.todos, newTodo];
+
+    return newTodo;
+  }
+
   removeTodo(toId) {}
   editTodo(toId) {}
 }
