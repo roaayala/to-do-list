@@ -25,6 +25,15 @@ export default function createTaskPage({ task, todos, actions }) {
       const item = document.createElement("div");
       item.className = "page-content__item";
 
+      // checkbox
+      const checkbox = document.createElement("input");
+      checkbox.className = "page-content__item-checkbox";
+      checkbox.type = "checkbox";
+      checkbox.checked = todo.isDone ? true : false;
+      item.appendChild(checkbox);
+
+      checkbox.addEventListener("click", () => {});
+
       // item title
       const title = document.createElement("h3");
       title.className = "page-content__item-title";
