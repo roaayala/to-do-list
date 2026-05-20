@@ -50,7 +50,7 @@ export default function createTaskPage({ task, todos, actions }) {
       const editButton = createButton({
         text: "Edit",
         callback: () => {
-          console.log("edit");
+          actions.showEditTodoDialog(todo.id);
         },
       });
       actionsContainer.appendChild(editButton);
