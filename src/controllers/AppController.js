@@ -192,7 +192,36 @@ export default class AppController {
           onAdd: (data) => this.actions.handleAddTodo(tsId, data),
         });
       },
-      showEditTodoDialog: () => {},
+      showEditTodoDialog: (tdId) => {
+        showDialog({
+          initialData: this.models.todos.find((todo) => todo.id === tdId),
+          dialogConfig: { title: "Edit Todo Details" },
+          formConfig: {
+            id: "addTodo",
+            textInputConfig: {
+              label: "Todo Name",
+              id: "todoName",
+              placeholder: "Enter todo name!",
+            },
+            textareaConfig: {
+              label: "Todo Description",
+              id: "todoDescription",
+              placeholder: "Enter todo description!",
+            },
+            dateInputConfig: {
+              isActive: true,
+              label: "Todo Deadline",
+              id: "todoDeadline",
+            },
+            selectConfig: {
+              isActive: true,
+              label: "Todo Priority",
+              id: "todoPriority",
+            },
+          },
+          onEdit: (data) => this.actions.handleEditTodo(tdId, data),
+        });
+      },
 
       // PROJECT HANDLER
       handleAddProject: (data) => {
@@ -217,6 +246,8 @@ export default class AppController {
         if (this.actions.getActiveProject() === pId) {
           this.actions.resetAllActive();
         }
+
+        console.log(this.models);
 
         this.render();
       },
@@ -249,6 +280,8 @@ export default class AppController {
           this.activeTask = null;
           this.activeTodo = null;
         }
+
+        console.log(this.models);
         this.render();
       },
       handleEditTask: (tsId, data) => {
@@ -270,18 +303,25 @@ export default class AppController {
 
         this.render();
       },
-      handleRemoveTodo: (tsId) => {
-        this.todoContoller.removeTodo(tsId);
+      handleRemoveTodo: (tdId) => {
+        this.todoContoller.removeTodo(tdId);
 
         this.models.todos = this.todoContoller.todos;
 
-        if (this.actions.getActiveTodo() === tsId) {
+        if (this.actions.getActiveTodo() === tdId) {
           this.activeTodo = null;
         }
 
+        console.log(this.models);
         this.render();
       },
-      handleEditTodo: () => {},
+      handleEditTodo: (tdId, data) => {
+        this.todoContoller.editTodo(tdId, data);
+
+        this.models.todos = this.todoContoller.todos;
+
+        this.render();
+      },
     };
 
     this.render();

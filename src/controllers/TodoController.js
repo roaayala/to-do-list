@@ -24,9 +24,19 @@ export default class TodoContoller {
     return newTodo;
   }
 
-  removeTodo(tsId) {
-    this.todos = this.todos.filter((todo) => todo.id !== tsId);
+  removeTodo(tdId) {
+    this.todos = this.todos.filter((todo) => todo.id !== tdId);
   }
 
-  editTodo(tsId) {}
+  editTodo(tdId, data) {
+    this.todos = this.todos.map((todo) => {
+      if (todo.id === tdId) {
+        return new Todo({
+          ...todo,
+          ...data,
+        });
+      }
+      return todo;
+    });
+  }
 }
