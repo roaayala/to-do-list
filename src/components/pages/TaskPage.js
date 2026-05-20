@@ -44,7 +44,27 @@ export default function createTaskPage({ task, todos, actions }) {
         console.log(todo);
       });
 
-      pageContent.append(item);
+      const actionsContainer = document.createElement("div");
+      actionsContainer.className = "page-content__item-actions";
+
+      const editButton = createButton({
+        text: "Edit",
+        callback: () => {
+          console.log("edit");
+        },
+      });
+      actionsContainer.appendChild(editButton);
+
+      const deleteButton = createButton({
+        text: "Delete",
+        callback: () => {
+          console.log("delete");
+        },
+      });
+      actionsContainer.appendChild(deleteButton);
+
+      item.appendChild(actionsContainer);
+      pageContent.appendChild(item);
     });
   }
 

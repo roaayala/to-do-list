@@ -19,7 +19,6 @@ export default function createProjectPage({ project, tasks, actions }) {
   projectPage.appendChild(pageHeader);
 
   // CONTENT
-
   const projectTasks = tasks.filter((task) => task.pId === project.id);
   const pageContent = document.createElement("main");
   pageContent.className = "page-content";
