@@ -40,6 +40,7 @@ export default function createTaskPage({ task, todos, actions }) {
       const title = document.createElement("h3");
       title.className = "page-content__item-title";
       title.textContent = todo.name;
+      if (todo.isDone) title.style.textDecoration = "line-through";
       item.appendChild(title);
 
       title.addEventListener("click", () => {});
