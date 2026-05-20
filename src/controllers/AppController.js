@@ -270,7 +270,17 @@ export default class AppController {
 
         this.render();
       },
-      handleRemoveTodo: () => {},
+      handleRemoveTodo: (tsId) => {
+        this.todoContoller.removeTodo(tsId);
+
+        this.models.todos = this.todoContoller.todos;
+
+        if (this.actions.getActiveTodo() === tsId) {
+          this.activeTodo = null;
+        }
+
+        this.render();
+      },
       handleEditTodo: () => {},
     };
 
