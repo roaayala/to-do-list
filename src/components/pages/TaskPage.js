@@ -58,7 +58,7 @@ export default function createTaskPage({ task, todos, actions }) {
       const deleteButton = createButton({
         text: "Delete",
         callback: () => {
-          console.log("delete");
+          actions.handleRemoveTodo(todo.id);
         },
       });
       actionsContainer.appendChild(deleteButton);
