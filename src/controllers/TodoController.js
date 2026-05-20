@@ -43,4 +43,13 @@ export default class TodoController {
       return todo;
     });
   }
+
+  toggleDone(tdId) {
+    this.todos = this.todos.map((todo) => {
+      if (todo.id === tdId) {
+        return new Todo({ ...todo, isDone: !todo.isDone });
+      }
+      return todo;
+    });
+  }
 }

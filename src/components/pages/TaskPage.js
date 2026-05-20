@@ -32,7 +32,9 @@ export default function createTaskPage({ task, todos, actions }) {
       checkbox.checked = todo.isDone ? true : false;
       item.appendChild(checkbox);
 
-      checkbox.addEventListener("click", () => {});
+      checkbox.addEventListener("click", () => {
+        actions.handleToggleTodo(todo.id);
+      });
 
       // item title
       const title = document.createElement("h3");
@@ -40,9 +42,7 @@ export default function createTaskPage({ task, todos, actions }) {
       title.textContent = todo.name;
       item.appendChild(title);
 
-      title.addEventListener("click", () => {
-        console.log(todo);
-      });
+      title.addEventListener("click", () => {});
 
       const actionsContainer = document.createElement("div");
       actionsContainer.className = "page-content__item-actions";

@@ -2,7 +2,7 @@ import createMainLayout from "../components/MainLayout.js";
 import showDialog from "../components/dialog-form/Dialog.js";
 import ProjectController from "./ProjectController.js";
 import TaskController from "./TaskController.js";
-import todoController from "./TodoController.js";
+import TodoController from "./TodoController.js";
 
 export default class AppController {
   constructor(root) {
@@ -21,7 +21,7 @@ export default class AppController {
     // CONTROLLERS
     this.projectController = new ProjectController(this.models.projects);
     this.taskController = new TaskController(this.models.tasks);
-    this.todoController = new todoController(this.models.todos);
+    this.todoController = new TodoController(this.models.todos);
 
     this.actions = {
       // SET ACTIVE STATE
@@ -105,7 +105,7 @@ export default class AppController {
       showAddTaskDialog: (pId) => {
         showDialog({
           initialData: null,
-          dialogConfig: { title: "Add Taks Details" },
+          dialogConfig: { title: "Add Task Details" },
           formConfig: {
             id: "addTask",
             textInputConfig: {
@@ -331,6 +331,12 @@ export default class AppController {
       handleEditTodo: (tdId, data) => {
         this.todoController.editTodo(tdId, data);
 
+        this.models.todos = this.todoController.todos;
+
+        this.render();
+      },
+      handleToggleTodo: (tdId) => {
+        this.todoController.toggleDone(tdId);
         this.models.todos = this.todoController.todos;
 
         this.render();
