@@ -2,7 +2,7 @@ import createMainLayout from "../components/MainLayout.js";
 import showDialog from "../components/dialog-form/Dialog.js";
 import ProjectController from "./ProjectController.js";
 import TaskController from "./TaskController.js";
-import TodoContoller from "./TodoController.js";
+import todoController from "./TodoController.js";
 
 export default class AppController {
   constructor(root) {
@@ -21,7 +21,7 @@ export default class AppController {
     // CONTROLLERS
     this.projectController = new ProjectController(this.models.projects);
     this.taskController = new TaskController(this.models.tasks);
-    this.todoContoller = new TodoContoller(this.models.todos);
+    this.todoController = new todoController(this.models.todos);
 
     this.actions = {
       // SET ACTIVE STATE
@@ -236,18 +236,31 @@ export default class AppController {
         this.render();
       },
       handleRemoveProject: (pId) => {
+        const tasksToRemove = this.models.tasks.filter(
+          (task) => task.pId === pId,
+        );
+
+        const tasksIdToRemove = tasksToRemove.map((task) => task.id);
+
         // remove all todo
+        tasksIdToRemove.forEach((tsId) => {
+          if (this.todoController.todos.some((todo) => todo.tsId === tsId)) {
+            this.todoController.removeTodosByTaskId(tsId);
+          }
+        });
+        this.models.todos = this.todoController.todos;
+
         // remove all task
+        this.taskController.removeTaskByProjectId(pId);
+        this.models.tasks = this.taskController.tasks;
+
         // remove project
         this.projectController.removeProject(pId);
-
         this.models.projects = this.projectController.projects;
 
         if (this.actions.getActiveProject() === pId) {
           this.actions.resetAllActive();
         }
-
-        console.log(this.models);
 
         this.render();
       },
@@ -271,8 +284,8 @@ export default class AppController {
       },
       handleRemoveTask: (tsId) => {
         // remove all todo
-        this.todoContoller.removeTodosByTaskId(tsId);
-        this.models.todos = this.todoContoller.todos;
+        this.todoController.removeTodosByTaskId(tsId);
+        this.models.todos = this.todoController.todos;
 
         // remove task
         this.taskController.removeTask(tsId);
@@ -283,7 +296,6 @@ export default class AppController {
           this.activeTodo = null;
         }
 
-        console.log(this.models);
         this.render();
       },
       handleEditTask: (tsId, data) => {
@@ -293,7 +305,7 @@ export default class AppController {
         this.render();
       },
       handleAddTodo: (tsId, data) => {
-        this.todoContoller.addTodo(
+        this.todoController.addTodo(
           tsId,
           data.name,
           data.description,
@@ -301,26 +313,25 @@ export default class AppController {
           data.priority,
         );
 
-        this.models.todos = this.todoContoller.todos;
+        this.models.todos = this.todoController.todos;
 
         this.render();
       },
       handleRemoveTodo: (tdId) => {
-        this.todoContoller.removeTodo(tdId);
+        this.todoController.removeTodo(tdId);
 
-        this.models.todos = this.todoContoller.todos;
+        this.models.todos = this.todoController.todos;
 
         if (this.actions.getActiveTodo() === tdId) {
           this.activeTodo = null;
         }
 
-        console.log(this.models);
         this.render();
       },
       handleEditTodo: (tdId, data) => {
-        this.todoContoller.editTodo(tdId, data);
+        this.todoController.editTodo(tdId, data);
 
-        this.models.todos = this.todoContoller.todos;
+        this.models.todos = this.todoController.todos;
 
         this.render();
       },

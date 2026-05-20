@@ -25,6 +25,11 @@ export default class TaskController {
   removeTask(tsId) {
     this.tasks = this.tasks.filter((task) => task.id !== tsId);
   }
+
+  removeTaskByProjectId(pId) {
+    this.tasks = this.tasks.filter((task) => task.pId !== pId);
+  }
+
   editTask(tsId, data) {
     this.tasks = this.tasks.map((task) => {
       if (task.id === tsId) {
