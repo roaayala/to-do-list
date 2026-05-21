@@ -6,13 +6,5 @@
     gap: 1rem;
 }
 
-.sidebar,
-.page-wrapper {
-    box-shadow: var(--box-shadow);
-    border-radius: var(--border-radius);
-    padding: 1rem;
-}
-
-.page-wrapper {
-    flex: 1;
-}
+@import "./sidebar.css";
+@import "./page.css";
