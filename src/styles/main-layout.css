@@ -6,5 +6,11 @@
     gap: 1rem;
 }
 
+@media screen and (min-width: 576px) {
+    .container {
+        flex-direction: row;
+    }
+}
+
 @import "./sidebar.css";
 @import "./page.css";
