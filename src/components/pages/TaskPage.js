@@ -8,7 +8,16 @@ export default function createTaskPage({ task, todos, actions }) {
   taskPage.className = "page-wrapper";
 
   // HEADER
-  const pageHeader = createPageHeader({ item: task });
+  const pageHeader = createPageHeader({
+    elementConfig: {
+      title: true,
+      description: true,
+      createdAt: true,
+      deadline: true,
+      priority: true,
+    },
+    item: task,
+  });
   taskPage.appendChild(pageHeader);
 
   // CONTENT
@@ -43,7 +52,9 @@ export default function createTaskPage({ task, todos, actions }) {
       if (todo.isDone) title.style.textDecoration = "line-through";
       item.appendChild(title);
 
-      title.addEventListener("click", () => {});
+      title.addEventListener("click", () => {
+        actions.setActiveTodo(todo.id);
+      });
 
       const actionsContainer = document.createElement("div");
       actionsContainer.className = "page-content__item-actions";

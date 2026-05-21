@@ -16,6 +16,7 @@ export default function createMainLayout(models, actions) {
   container.appendChild(sidebar);
 
   if (getActiveTodo()) {
+    console.log("todo page");
   } else if (getActiveTask()) {
     const task = tasks.find((task) => getActiveTask() === task.id);
 

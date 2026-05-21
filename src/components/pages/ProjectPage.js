@@ -15,7 +15,16 @@ export default function createProjectPage({ project, tasks, actions }) {
   }
 
   // HEADER
-  const pageHeader = createPageHeader({ item: project });
+  const pageHeader = createPageHeader({
+    elementConfig: {
+      title: true,
+      description: true,
+      createdAt: true,
+      deadline: false,
+      priority: false,
+    },
+    item: project,
+  });
   projectPage.appendChild(pageHeader);
 
   // CONTENT
