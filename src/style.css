@@ -16,16 +16,28 @@
     background-color: transparent;
     /*color: var(--primary);*/
     padding: 0.25rem;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .btn:hover {
-    color: var(--bg-light);
-    background-color: var(--primary);
+    color: var(--primary-dark);
 }
 
 .btn.btn-outline {
 }
 
 .btn.btn-primary {
+    border: 1px solid var(--primary);
+    background-color: var(--primary);
+    color: var(--bg-light);
+    padding: 0.375rem 0.75rem;
+}
+
+.btn.btn-primary:hover {
+    border: 1px solid var(--primary-dark);
+    background-color: var(--primary-dark);
+}
+
+.icon-button {
+    font-size: 1.25rem;
 }
