@@ -3,20 +3,20 @@ import createSidebarNav from "./SidebarNav.js";
 import createSidebarAction from "./SidebarAction.js";
 
 export default function createSidebar({ projects, actions }) {
-  const sidebar = document.createElement("aside");
-  sidebar.className = "sidebar";
+    const sidebar = document.createElement("aside");
+    sidebar.className = "sidebar";
 
-  // header
-  const sidebarHeader = createSidebarHeader();
-  sidebar.appendChild(sidebarHeader);
+    // header
+    const sidebarHeader = createSidebarHeader();
+    sidebar.appendChild(sidebarHeader);
 
-  // content
-  const sidebarNav = createSidebarNav({ projects, actions });
-  sidebar.appendChild(sidebarNav);
+    // content
+    const sidebarNav = createSidebarNav({ projects, actions });
+    sidebar.appendChild(sidebarNav);
 
-  // actions
-  const sidebarAction = createSidebarAction({ actions });
-  sidebar.appendChild(sidebarAction);
+    // actions
+    const sidebarAction = createSidebarAction({ actions });
+    sidebar.appendChild(sidebarAction);
 
-  return sidebar;
+    return sidebar;
 }

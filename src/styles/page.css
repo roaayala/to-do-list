@@ -1,7 +1,8 @@
 .page-wrapper {
-    box-shadow: var(--box-shadow);
+    /*box-shadow: var(--box-shadow);
     border-radius: var(--border-radius);
     padding: 1rem;
 
-    flex: 1;
+    flex: 1;*/
+    padding: 2rem;
 }

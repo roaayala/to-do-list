@@ -3,4 +3,13 @@
     --box-shadow:
         rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
         rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+
+    /* color */
+    --bg: oklch(92.8% 0.006 264.531);
+    --bg-light: oklch(98.5% 0.002 247.839);
+    --primary-dark: oklch(62.3% 0.214 259.815);
+    --primary: oklch(62.3% 0.214 259.815);
+    --primary-light: oklch(80.9% 0.105 251.813);
+    --text: oklch(21% 0.034 264.665);
+    --text-muted: oklch(37.3% 0.034 259.733);
 }

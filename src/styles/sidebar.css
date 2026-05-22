@@ -1,7 +1,6 @@
 .sidebar {
-    box-shadow: var(--box-shadow);
-    border-radius: var(--border-radius);
-    padding: 1rem;
+    padding: 2rem;
+    background-color: var(--bg);
 
     display: flex;
     flex-direction: column;
@@ -10,28 +9,26 @@
 
 @media screen and (min-width: 576px) {
     .sidebar {
-        width: 15rem;
+        width: 18rem;
     }
 }
 
 .sidebar__header-title {
-    border-bottom: 1px black solid;
-    padding-bottom: 0.75rem;
 }
 
 .sidebar__nav {
-    margin-bottom: 0.5rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px black solid;
 }
 
 .sidebar__nav-item {
+    padding: 0.5rem 0;
     align-items: center;
     display: flex;
-    height: 2rem;
+    height: 3rem;
+    border-bottom: 1px solid var(--text-muted);
 }
 
 .sidebar__nav-item-title {
+    font-weight: bold;
     flex: 1;
     cursor: pointer;
 }
