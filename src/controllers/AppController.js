@@ -7,7 +7,7 @@ import TodoController from "./TodoController.js";
 const staterModels = {
     projects: [
         {
-            id: "ws-1",
+            id: "p-1",
             createdAt: "2026-05-01",
             name: "Starter Project",
             description: "My first project",
@@ -16,7 +16,7 @@ const staterModels = {
     tasks: [
         {
             id: "ts-1",
-            pId: "ws-1",
+            pId: "p-1",
             createdAt: "2026-05-01",
             name: "Buy Groceries",
             description: "",
@@ -25,7 +25,7 @@ const staterModels = {
         },
         {
             id: "ts-2",
-            pId: "ws-1",
+            pId: "p-1",
             createdAt: "2026-05-01",
             name: "Clean House",
             description: "",
