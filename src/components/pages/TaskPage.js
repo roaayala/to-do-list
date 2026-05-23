@@ -22,7 +22,7 @@ export default function createTaskPage({ task, todos, actions }) {
 
     // CONTENT
     const taskTodos = todos.filter((todo) => todo.tsId === task.id);
-    console.log(taskTodos);
+
     const pageContent = document.createElement("main");
     pageContent.className = "page-content";
 
@@ -61,7 +61,7 @@ export default function createTaskPage({ task, todos, actions }) {
             actionsContainer.className = "page-content__item-actions";
 
             const editButton = createButton({
-                text: "Edit",
+                icon: "edit",
                 callback: () => {
                     actions.showEditTodoDialog(todo.id);
                 },
@@ -69,7 +69,7 @@ export default function createTaskPage({ task, todos, actions }) {
             actionsContainer.appendChild(editButton);
 
             const deleteButton = createButton({
-                text: "Delete",
+                icon: "delete",
                 callback: () => {
                     actions.handleRemoveTodo(todo.id);
                 },
@@ -87,6 +87,7 @@ export default function createTaskPage({ task, todos, actions }) {
     const pageAction = createPageAction({
         buttonConfig: {
             text: "New Todo",
+            style: "btn btn-primary",
             callback: () => {
                 actions.showAddTodoDialog(task.id);
             },

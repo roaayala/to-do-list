@@ -57,7 +57,7 @@ export default function createProjectPage({ project, tasks, actions }) {
 
             // edit Button
             const editButton = createButton({
-                text: "Edit",
+                icon: "edit",
                 callback: () => {
                     actions.showEditTaskDialog(task.id);
                 },
@@ -66,7 +66,7 @@ export default function createProjectPage({ project, tasks, actions }) {
 
             // delete button
             const deleteButton = createButton({
-                text: "Delete",
+                icon: "delete",
                 callback: () => {
                     actions.handleRemoveTask(task.id);
                 },

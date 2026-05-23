@@ -1,8 +1,33 @@
 .page-wrapper {
-    /*box-shadow: var(--box-shadow);
-    border-radius: var(--border-radius);
-    padding: 1rem;*/
-
     flex: 1;
     padding: 2rem;
+}
+
+.page-header {
+    margin-bottom: 1.5rem;
+}
+
+.page-content {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.page-content__item {
+    display: flex;
+}
+
+.page-content__item-title {
+    flex: 1;
+}
+
+.page-content__item-title:hover {
+    cursor: pointer;
+    color: var(--primary);
+}
+
+.page-content__item-actions {
+    display: flex;
+    gap: 0.5rem;
 }
