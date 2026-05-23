@@ -1,8 +1,11 @@
 import createMainLayout from "../components/MainLayout.js";
 import showDialog from "../components/dialog-form/Dialog.js";
+import { getFromStorage, saveToStorage } from "../utils/store.js";
 import ProjectController from "./ProjectController.js";
 import TaskController from "./TaskController.js";
 import TodoController from "./TodoController.js";
+
+const APP_STORAGE_KEY = "MINI_PROJECT_DATA";
 
 const staterModels = {
     projects: [
@@ -60,7 +63,7 @@ const staterModels = {
 export default class AppController {
     constructor(root) {
         this.root = root;
-        this.models = staterModels;
+        this.models = getFromStorage(APP_STORAGE_KEY) || staterModels;
 
         // ACTIVE STATE
         this.activeProject = null;
@@ -290,6 +293,8 @@ export default class AppController {
                 this.models.projects = this.projectController.projects;
                 this.actions.setActiveProject(newProject.id);
 
+                saveToStorage(APP_STORAGE_KEY, this.models);
+
                 this.render();
             },
             handleRemoveProject: (pId) => {
@@ -323,11 +328,16 @@ export default class AppController {
                     this.actions.resetAllActive();
                 }
 
+                saveToStorage(APP_STORAGE_KEY, this.models);
+
                 this.render();
             },
             handleEditProject: (pId, data) => {
                 this.projectController.editProject(pId, data);
                 this.models.projects = this.projectController.projects;
+
+                saveToStorage(APP_STORAGE_KEY, this.models);
+
                 this.render();
             },
 
@@ -341,6 +351,9 @@ export default class AppController {
                 );
 
                 this.models.tasks = this.taskController.tasks;
+
+                saveToStorage(APP_STORAGE_KEY, this.models);
+
                 this.render();
             },
             handleRemoveTask: (tsId) => {
@@ -357,11 +370,15 @@ export default class AppController {
                     this.activeTodo = null;
                 }
 
+                saveToStorage(APP_STORAGE_KEY, this.models);
+
                 this.render();
             },
             handleEditTask: (tsId, data) => {
                 this.taskController.editTask(tsId, data);
                 this.models.tasks = this.taskController.tasks;
+
+                saveToStorage(APP_STORAGE_KEY, this.models);
 
                 this.render();
             },
@@ -376,6 +393,8 @@ export default class AppController {
 
                 this.models.todos = this.todoController.todos;
 
+                saveToStorage(APP_STORAGE_KEY, this.models);
+
                 this.render();
             },
             handleRemoveTodo: (tdId) => {
@@ -387,6 +406,8 @@ export default class AppController {
                     this.activeTodo = null;
                 }
 
+                saveToStorage(APP_STORAGE_KEY, this.models);
+
                 this.render();
             },
             handleEditTodo: (tdId, data) => {
@@ -394,11 +415,15 @@ export default class AppController {
 
                 this.models.todos = this.todoController.todos;
 
+                saveToStorage(APP_STORAGE_KEY, this.models);
+
                 this.render();
             },
             handleToggleTodo: (tdId) => {
                 this.todoController.toggleDone(tdId);
                 this.models.todos = this.todoController.todos;
+
+                saveToStorage(APP_STORAGE_KEY, this.models);
 
                 this.render();
             },
